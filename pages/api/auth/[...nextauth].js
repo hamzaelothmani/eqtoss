@@ -5,6 +5,10 @@ import { MongoDBAdapter } from "@next-auth/mongodb-adapter"
 import clientPromise from "../../../lib/mongodb"
 import { compare } from "bcrypt";
 import CredentialsProvider from "next-auth/providers/credentials";
+import User from "../../../model/User";
+import dbConnect from "../../../lib/dbConnect";
+
+
 
 
 
@@ -42,6 +46,7 @@ export default NextAuth({
 
         // Email Not found
         if (!user) {
+          
           throw new Error("Email is not registered");
         }
 
@@ -55,7 +60,6 @@ export default NextAuth({
         if (!isPasswordCorrect) {
           throw new Error("Password is incorrect");
         }
-
         return user;
       },
     }),
@@ -75,5 +79,12 @@ export default NextAuth({
   session : {
     strategy: "jwt"
   },
-  debug: true
+  debug: true,
+
+  //
+  jwt :{
+    secret: process.env.NEXTAUTH_JWT_SECRET
+  },
+  secret: process.env.NEXTAUTH_SECRET
+//
 })

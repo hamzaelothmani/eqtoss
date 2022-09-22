@@ -41,7 +41,7 @@ export default function Home() {
         </Head>
       </div>
 
-      <div className="relative w-full">
+      {/* <div className="relative w-full">
         <div className=" absolue xl:w-[800px] xl:h-[800px]  h-96  ">
           <div className="   ">
             <Image
@@ -115,8 +115,47 @@ export default function Home() {
             </Link>
           </div>
         </div>
-      </div>
-
+      </div> */}
+<div class="relative bg-gray-900">
+  <div class="absolute inset-x-0 bottom-0">
+    <svg viewBox="0 0 224 12" fill="currentColor" class="w-full -mb-1 text-white" preserveAspectRatio="none">
+      <path d="M0,0 C48.8902582,6.27314026 86.2235915,9.40971039 112,9.40971039 C137.776408,9.40971039 175.109742,6.27314026 224,0 L224,12.0441132 L0,12.0441132 L0,0 Z"></path>
+    </svg>
+  </div>
+  <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+    <div class="relative max-w-2xl sm:mx-auto sm:max-w-xl md:max-w-2xl sm:text-center">
+      <h2 class="mb-6 font-sans text-3xl font-bold tracking-tight text-white sm:text-4xl sm:leading-none">
+        The quick, brown fox<br class="hidden md:block" />
+        jumps over a
+        <span class="relative inline-block">
+          lazy dog
+          <div class="w-full h-3 -mt-3 bg-deep-purple-accent-400"></div>
+        </span>
+      </h2>
+      <p class="mb-6 text-base font-thin tracking-wide text-gray-300 md:text-lg">
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae. explicabo. Sed ut perspiciatis unde omnis.
+      </p>
+      <form class="flex flex-col items-center w-full mb-4 md:flex-row md:px-16">
+        <input
+          placeholder="Email"
+          required=""
+          type="text"
+          class="flex-grow w-full h-12 px-4 mb-3 text-white transition duration-200 bg-transparent border-2 border-gray-400 rounded appearance-none md:mr-2 md:mb-0 focus:border-deep-purple-accent-200 focus:outline-none focus:shadow-outline"
+        />
+        <button
+          type="submit"
+          class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+        >
+          Subscribe
+        </button>
+      </form>
+      <p class="max-w-md mb-10 text-xs font-thin tracking-wide text-gray-500 sm:text-sm sm:mx-auto md:mb-16">
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
+      </p>
+     
+    </div>
+  </div>
+</div>
       <div className=" flex gap-4 justify-center w-full bg-gradient-to-l from-slate-500 to-black text-white xl:h-16 lg:h-12 md:h-10 sm:h-8 xl:text-4xl lg:text-2xl md:text-xl sm:text-lg text-center  xl:mt-20 lg:mt-16 md:mt-12 mt-6 ">
       {/* <svg
       xmlns="http://www.w3.org/2000/svg"

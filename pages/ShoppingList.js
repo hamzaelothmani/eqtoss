@@ -59,12 +59,12 @@ const ShoppingList = () => {
             <button onClick={()=>filterResault('Women')}>Women</button>
             <button onClick={()=>filterResault('Children')}>Children</button>
             
-            {/* <select class="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
+            <select class="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
               <option value="">All Type</option>
-              <option  onClick={()=>filterResault('Men')} >Men</option>
+              <option value="for-sale" onClick={()=>filterResault('Men')} >Men</option>
               <option value="for-sale">Women</option>
               <option value="for-sale">Children</option>
-            </select> */}
+            </select>
           
 
             <select class="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">

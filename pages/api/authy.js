@@ -55,13 +55,14 @@ export default async function handler(
   }
 
   // hash password
+  // it would be better if hash the password on the client side (register)
   const hashedPassword = await bcrypt.hash(password, 12);
 
   // create new User on MongoDB
   const newUser = new User({
     name: username,
     email,
-    hashedPassword: password,
+    hashedPassword,
   });
 
   newUser
