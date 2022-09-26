@@ -2,6 +2,8 @@ import React, {useEffect} from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
+//comiit
+
 const NotFound = () => {
     const router = useRouter()
 
