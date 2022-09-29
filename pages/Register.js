@@ -56,8 +56,6 @@ const Register = ({providers}) => {
     
         res.error ? console.log(res.error) : redirectToHome();
       };
-
-
   return (
     <>
     <div>

@@ -18,15 +18,31 @@ export default async function handler(req, res) {
       break;
 
     case "POST":
-      console.log("hi",req.body);
-      let  poster = new Poster (req.body);
-      poster.save((err, posteer) => {
-      if (err) {
-      res.status(500).send(err);
+      try {
+        const { images } = req.body;
+if(!images) return 'invalid Data'
+        
+        const client = await Poster.create({ images });
+
+        res.status(201).json({success:true, data:client});
+      } catch (error) {
+        console.log(error);
+        res.status(500).json({ success: false, error });
       }
-      res.status(201).json(posteer);
-      });
       break;
+    // case "POST":
+    //   try {
+    //     const { title,  description, price, url, category } = req.body;
+
+    //     if (!title&& !description && !price && !url && !category) throw "invalid data";
+    //     const client = await Poster.create({ title,  description, price, url, category });
+
+    //     res.status(201).json({success:true, data:client});
+    //   } catch (error) {
+    //     console.log(error);
+    //     res.status(500).json({ success: false, error });
+    //   }
+    //   break;
   }
 }
 

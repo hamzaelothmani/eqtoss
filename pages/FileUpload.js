@@ -2,39 +2,48 @@ import axios from 'axios'
 
 import React, { useState } from 'react'
 
-const FileUpload = ({image, setImage,  removeFile}) => {
-const [mongo, setMongo] = useState({})
-    const uploadHandler = (event)=>{
-const file = event.target.files[0]
+const FileUpload =  () => {
+const [images, setImages] = useState([])
+    const uploadHandler = async (event)=>{
+const files = event.target.files
+console.log(files);
 
-
-
-
-const formData = new FormData()
+let urls=[]; 
+for  (let file of files){
+const formData =  new FormData()
 formData.append('file', file)
 formData.append('upload_preset', 'he-uploads');
 
-axios.post('https://api.cloudinary.com/v1_1/dg8bm9sad/image/upload', formData)
+await axios.post('https://api.cloudinary.com/v1_1/dg8bm9sad/image/upload', formData)
 .then((res)=> {
-   console.log(res.data);
-setMongo(res.data.secure_url)
-    
+  console.log('request has been sent');
+urls.push(res.data.secure_url)
 }).catch((err)=> {
     console.error(err)
    
 })
+}
+ setImages(urls)
+
+
     }
-const sendBack = ()=>{
+
+const sendBack =  ()=>{
     let object={
-        image:mongo
+        images
     }
-    axios.post('/api/server', object)
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+images.length > 0 ? 
+
+  axios.post("/api/server", {
+  images
+ }, ).then(function(response) {
+   console.log(response);
+ }).catch(function(error) {
+   console.log(error);
+ })
+:
+console.log("the file is empty");
+    
 }
 
   return (
@@ -47,7 +56,7 @@ const sendBack = ()=>{
             <p className="mb-2 text-sm text-gray-500 dark:text-gray-400"><span className="font-semibold">Click to upload</span> or drag and drop</p>
             <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
         </div>
-        <input onChange={(event)=>uploadHandler (event)} id="dropzone-file" type="file" className="hidden" />
+        <input onChange={(event)=>uploadHandler (event)} id="dropzone-file" type="file" className="hidden" multiple />
     </label>
         <button onClick={()=> sendBack()} >submit</button>
 </div> 

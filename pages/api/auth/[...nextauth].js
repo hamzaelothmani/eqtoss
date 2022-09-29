@@ -81,10 +81,10 @@ export default NextAuth({
   },
   debug: true,
 
-  //
-  jwt :{
-    secret: process.env.NEXTAUTH_JWT_SECRET
-  },
-  secret: process.env.NEXTAUTH_SECRET
+  // cause the proplem
+  // jwt :{
+  //   secret: process.env.NEXTAUTH_JWT_SECRET
+  // },
+  // secret: process.env.NEXTAUTH_SECRET
 //
 })

@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const postForm = new mongoose.Schema({
-  // name : {
+  // title : {
   //   type: String,
   //   required: true,
     
@@ -15,13 +15,16 @@ const postForm = new mongoose.Schema({
   //   type: String,
   //   required: true,
   // },
+  // category : {
+  //   type: String,
+  //   required: true,
+  // },
 
   // description : {
   //   type: String,
   //   required: true,
   // },
-  image : { type: String,
-      required: true, },
+  images:{ type : Array , "default" : [] }
 },
 {
     timestamps: true
