@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { FaRegCommentDots } from "react-icons/fa";
-import { BiLike } from "react-icons/bi";
+import { AiFillLike } from "react-icons/ai";
 const Cards = ({desc, img, price}) => {
  
 
@@ -12,8 +12,7 @@ const Cards = ({desc, img, price}) => {
     <>
     
  
-      <div className="sm:grid-cols-1 mt-20  lg:grid-cols-3 md:grid-cols-2 grid xl:grid-cols-4 2xl:grid-cols-5   gap-4 ">
-        <div class="max-w-sm container mx-auto  bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+{/* <div>
           <a>
             <Image
              width={400}
@@ -70,9 +69,54 @@ const Cards = ({desc, img, price}) => {
             </div>
           </div>
         </div>
-       
+        */}
+        <div class="container mx-auto">
         
+      <Link href='/Infos'>
+      
+      
+        <a  class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden">
+        <div class="relative pb-48 overflow-hidden">
+        <Image
+           layout="fill"
+             className='rounded-lg'
+              objectFit="cover"
+              quality={100}
+              src={`/GG.jpg`}
+              alt=""
+            />
+          {/* <img class="absolute inset-0 h-full w-full object-cover" src="https://images.unsplash.com/photo-1475855581690-80accde3ae2b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt=""/> */}
+        </div>
+        <div class="p-4">
+          <span class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">Highlight</span>
+          <h2 class="mt-2 mb-2  font-bold">Purus Ullamcorper Inceptos Nibh</h2>
+          <p class="text-sm">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ullamcorper nulla non metus auctor fringilla.</p>
+          <div class="mt-3 flex items-center">
+            <span class="text-sm font-semibold">ab</span>&nbsp;<span class="font-bold text-xl">45,00</span>&nbsp;<span class="text-sm font-semibold">€</span>
+          </div>
+        </div>
+        <div class="p-4 border-t border-b text-xs text-gray-700">
+          <span class="flex items-center mb-1">
+            <i class="far fa-clock fa-fw mr-2 text-gray-900"></i> 10/10/2022
+          </span>
+          <span class="flex items-center">
+            <i class="far fa-address-card fa-fw text-gray-900 mr-2"></i> posted by <span className="font-bold text-black ml-1 text-base tracking-tight " > hamza</span> 
+          </span> 
+                
+        </div>
+        <div className="flex justify-around my-4">
+               <Link href='/Infos#comment' ><button className="hover:-translate-y-0.5 flex gap-2 transform transition text-slate-500 focus:text-black">
+                  <FaRegCommentDots className="w-6  h-6  " /><span>2</span>
+                </button></Link> 
+                <button className="hover:-translate-y-0.5 flex gap-2 transform transition text-slate-500 focus:text-red-900">
+                  <AiFillLike className="w-6 h-6 " /><span>2</span>
+                </button>
+              </div>
+       </a>
+      </Link>
       </div>
+     
+     
     </>
   );
 };

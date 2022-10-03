@@ -116,9 +116,9 @@ export default function Home() {
           </div>
         </div>
       </div> */}
-<div class="relative bg-gray-900">
+{/* <div className="relative bg-gray-900">
   <div class="absolute inset-x-0 bottom-0">
-    <svg viewBox="0 0 224 12" fill="currentColor" class="w-full -mb-1 text-white" preserveAspectRatio="none">
+    <svg viewBox="0 0 224 12" fill="currentColor" classNmae="w-full -mb-1 text-white" preserveAspectRatio="none">
       <path d="M0,0 C48.8902582,6.27314026 86.2235915,9.40971039 112,9.40971039 C137.776408,9.40971039 175.109742,6.27314026 224,0 L224,12.0441132 L0,12.0441132 L0,0 Z"></path>
     </svg>
   </div>
@@ -155,8 +155,23 @@ export default function Home() {
      
     </div>
   </div>
-</div>
-      <div className=" flex gap-4 justify-center w-full bg-gradient-to-l from-slate-500 to-black text-white xl:h-16 lg:h-12 md:h-10 sm:h-8 xl:text-4xl lg:text-2xl md:text-xl sm:text-lg text-center  xl:mt-20 lg:mt-16 md:mt-12 mt-6 ">
+</div> */}
+
+<section className="px-3 py-5 bg-neutral-100 lg:py-10">
+  <div className="grid lg:grid-cols-2 items-center justify-items-center gap-5">
+    <div className="order-2 lg:order-1 flex flex-col justify-center items-center">
+      <p className="text-4xl font-bold md:text-7xl text-orange-600">25% OFF</p>
+      <p className="text-4xl font-bold md:text-7xl">SUMMER SALE</p>
+      <p className="mt-2 text-sm md:text-lg">For limited time only!</p>
+      <button className="text-lg md:text-2xl bg-black text-white py-2 px-5 mt-10 hover:bg-zinc-800">Shop Now</button>
+    </div>
+    <div className="order-1 lg:order-2">
+      <img className="h-80 w-80 object-cover lg:w-[500px] lg:h-[500px]" src="https://images.unsplash.com/photo-1615397349754-cfa2066a298e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80" alt=""/>
+    </div>
+  </div>
+</section>
+      <div className=" flex gap-4 justify-center w-full font-semibold  text-black xl:h-16 lg:h-12 md:h-10 sm:h-8 xl:text-4xl lg:text-2xl md:text-xl sm:text-lg text-center  xl:mt-20 lg:mt-16 md:mt-12 mt-6 ">
+      
       {/* <svg
       xmlns="http://www.w3.org/2000/svg"
       width="64"
@@ -304,7 +319,21 @@ export default function Home() {
         </Swiper>
       </div>
 
-      <div className="flex items-center mt-20 bg-white text-gray-800">
+      <section className="bg-white dark:bg-gray-900">
+    <div className="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
+        <div className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+            <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">We didn't reinvent the wheel</h2>
+            <p className="mb-4">We are strategists, designers and developers. Innovators and problem solvers. Small enough to be simple and quick, but big enough to deliver the scope you want at the pace you need. Small enough to be simple and quick, but big enough to deliver the scope you want at the pace you need.</p>
+            <p>We are strategists, designers and developers. Innovators and problem solvers. Small enough to be simple and quick.</p>
+        </div>
+        <div className="grid grid-cols-2 gap-4 mt-8">
+            <img className="w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-2.png" alt="office content 1"/>
+            <img className="mt-4 w-full lg:mt-10 rounded-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-1.png" alt="office content 2"/>
+        </div>
+    </div>
+</section>
+
+      {/* <div className="flex items-center mt-20 bg-white text-gray-800">
         <div className="p-4 w-full">
           <div className="grid grid-cols-12 gap-4">
             <div className="col-span-12 sm:col-span-6 md:col-span-3">
@@ -376,7 +405,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

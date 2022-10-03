@@ -78,14 +78,18 @@ const ShoppingList = () => {
           </div>
         </div>
       </div>
+      <div className="sm:grid-cols-1 mt-20  lg:grid-cols-3 md:grid-cols-2 grid xl:grid-cols-4 2xl:grid-cols-5   gap-4 ">
       {product.sort((a, b)=> b.price - a.price).sort((a, b)=> b.id - a.id ).filter((val)=>{
         if(input== "")return val
         else if(val.desc.toLowerCase().includes(input.toLowerCase()) || val.name.toLowerCase().includes(input.toLowerCase()) ) return val
        
       }).map((ele)=> (
+        
+        <div class="max-w-sm container mx-auto  bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
         <Cards key={ele.id} price={ele.price} img={ele.img}  desc={ele.desc} />
+      </div>
       ))}
-      
+      </div>
     </>
   );
 };

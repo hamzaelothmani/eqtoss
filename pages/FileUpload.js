@@ -4,6 +4,8 @@ import React, { useState } from 'react'
 
 const FileUpload =  () => {
 const [images, setImages] = useState([])
+const [areImagesLoaded, setareImagesLoaded] = useState(false)
+
     const uploadHandler = async (event)=>{
 const files = event.target.files
 console.log(files);
@@ -24,7 +26,7 @@ urls.push(res.data.secure_url)
 })
 }
  setImages(urls)
-
+ setareImagesLoaded(true)
 
     }
 
@@ -32,7 +34,8 @@ const sendBack =  ()=>{
     let object={
         images
     }
-images.length > 0 ? 
+
+
 
   axios.post("/api/server", {
   images
@@ -41,8 +44,8 @@ images.length > 0 ?
  }).catch(function(error) {
    console.log(error);
  })
-:
-console.log("the file is empty");
+
+
     
 }
 
@@ -58,7 +61,10 @@ console.log("the file is empty");
         </div>
         <input onChange={(event)=>uploadHandler (event)} id="dropzone-file" type="file" className="hidden" multiple />
     </label>
-        <button onClick={()=> sendBack()} >submit</button>
+    {
+areImagesLoaded ?    <button onClick={()=> sendBack()} >submit</button> : ""
+
+    }
 </div> 
     
     </>

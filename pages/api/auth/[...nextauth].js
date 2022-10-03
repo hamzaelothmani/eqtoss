@@ -79,7 +79,7 @@ export default NextAuth({
   session : {
     strategy: "jwt"
   },
-  debug: true,
+  debug: process.env.NODE_ENV !== "production",
 
   // cause the proplem
   // jwt :{
