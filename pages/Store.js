@@ -3,13 +3,13 @@ import axios from 'axios'
 
 const Store = () => {
   const [name, setName] = useState('')
-const [email, setEmail] = useState(["medelothmani481@gmail.com", "hamzasimiller@gmail.com", "medamal2002@gmail.com", "sheovault@gmail.com" , "fonybeing@gmail.com" ])
+const [email, setEmail] = useState(["medelothmani481@gmail.com", "hamzasimiller@gmail.com", "medamal2002@gmail.com"])
 const [message, setMessage] = useState('')
 
 const sendData = ()=>{
 console.log('sending');
   axios.post('/api/contact', {
-     name, email, message
+    email
     })
     .then(function (response) {
       console.log(response, 'done');

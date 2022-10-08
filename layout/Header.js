@@ -12,7 +12,7 @@ export default function Header() {
   const router = useRouter();
 
   const { data: session, status } = useSession();
-  console.log(session);
+  // console.log(session);
 
  
 

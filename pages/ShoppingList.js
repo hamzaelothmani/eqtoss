@@ -1,15 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Cards from "./Cards";
-const data = [
-    { img: "pet.png", name: "express", desc: "pet", price: 999, id:2, category: 'Men'  },
-    { img: "resto.png", name: "mongoose", desc: "retsto", price: 888, id:1, category: 'Women' },
-    { img: "tech.png", name: "middleware", desc: "tech", price: 222, id:3, category: 'Children' },
-  ]
+// const data = [
+//     { img: "pet.png", name: "express", desc: "pet", price: 999, id:2, category: 'Men'  },
+//     { img: "resto.png", name: "mongoose", desc: "retsto", price: 888, id:1, category: 'Women' },
+//     { img: "tech.png", name: "middleware", desc: "tech", price: 222, id:3, category: 'Children' },
+//   ]
 
 const ShoppingList = () => {
-  const [product, setProduct] = useState(data);
+  // const [product, setProduct] = useState(data);
   const [input, setInput] = useState('')
-  console.log(input,'hamza');
+  const [formData, setFormData] = useState([])
+  console.log(formData, "fffffffffff");
+
+  // console.log(input,'hamza');
 
   const filterResault=(item)=>{
     const resault = data.filter((pro)=>
@@ -18,16 +22,26 @@ const ShoppingList = () => {
     setProduct(resault)
   }
 
-
+useEffect(()=>{
+  axios
+    .get("/api/server")
+    .then(function(response) {
+      setFormData(response.data.data)
+        console.log(response)
+    })
+    .catch(function(error) {
+        console.log((error))
+    });
+}, [])
 
 
   return (
     <>
-      <div class="w-full md:w-2/3 shadow m-auto p-5 rounded-lg bg-white">
-        <div class="relative">
-          <div class="absolute flex items-center ml-2 h-full">
+      <div className="w-full md:w-2/3 shadow m-auto p-5 rounded-lg bg-white">
+        <div className="relative">
+          <div className="absolute flex items-center ml-2 h-full">
             <svg
-              class="w-4 h-4 fill-current text-primary-gray-dark"
+              className="w-4 h-4 fill-current text-primary-gray-dark"
               viewBox="0 0 16 16"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -40,26 +54,26 @@ const ShoppingList = () => {
           onChange={(e)=> setInput(e.target.value)}
             type="text"
             placeholder="Search by listing, location, bedroom number..."
-            class="px-8 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
+            className="px-8 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
           />
         </div>
 
-        <div class="flex items-center justify-between mt-4">
-          <p class="font-medium">Filters</p>
+        <div className="flex items-center justify-between mt-4">
+          <p className="font-medium">Filters</p>
 
-          <button class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium rounded-md">
+          <button className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium rounded-md">
             Reset Filter
           </button>
         </div>
 
         <div className="m-auto">
-          <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
             <button onClick={()=>setProduct(data)}>All Type</button>
             <button onClick={()=>filterResault('Men')}>Men</button>
             <button onClick={()=>filterResault('Women')}>Women</button>
             <button onClick={()=>filterResault('Children')}>Children</button>
             
-            <select class="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
+            <select className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
               <option value="">All Type</option>
               <option value="for-sale" onClick={()=>filterResault('Men')} >Men</option>
               <option value="for-sale">Women</option>
@@ -67,7 +81,7 @@ const ShoppingList = () => {
             </select>
           
 
-            <select class="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
+            <select className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
               <option value="">Furnish Type</option>
               <option value="fully-furnished">Fully Furnished</option>
               <option value="partially-furnished">Partially Furnished</option>
@@ -78,18 +92,31 @@ const ShoppingList = () => {
           </div>
         </div>
       </div>
-      <div className="sm:grid-cols-1 mt-20  lg:grid-cols-3 md:grid-cols-2 grid xl:grid-cols-4 2xl:grid-cols-5   gap-4 ">
-      {product.sort((a, b)=> b.price - a.price).sort((a, b)=> b.id - a.id ).filter((val)=>{
+
+{
+  formData.map((elements, index)=> (
+
+    <Cards elements={elements} key={index} /> 
+  )
+  )
+}
+
+
+      {/* {
+      product.sort((a, b)=> b.price - a.price).sort((a, b)=> b.id - a.id ).filter((val)=>{
         if(input== "")return val
         else if(val.desc.toLowerCase().includes(input.toLowerCase()) || val.name.toLowerCase().includes(input.toLowerCase()) ) return val
        
-      }).map((ele)=> (
+      })
+      .map((ele)=> (
         
-        <div class="max-w-sm container mx-auto  bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-        <Cards key={ele.id} price={ele.price} img={ele.img}  desc={ele.desc} />
-      </div>
-      ))}
-      </div>
+       
+        <Cards  price={ele.price} img={ele.img}  desc={ele.desc} />
+  
+      ))} */}
+ <div>
+  
+ </div>
     </>
   );
 };

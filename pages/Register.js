@@ -87,7 +87,7 @@ const Register = ({providers}) => {
                             {/* <svg
                               xmlns="http://www.w3.org/2000/svg"
                               viewBox="0 0 448 512"
-                              class="w-4 h-4"
+                              className="w-4 h-4"
                             > */}
                               {/* <!--! Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --> */}
                               {/* <path
@@ -99,51 +99,51 @@ const Register = ({providers}) => {
                       </div>
                     </div>
                   ))}
-<div class="bg-grey-lighter min-h-screen flex flex-col">
-            <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-                <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
-                    <h1 class="mb-8 text-3xl text-center">Sign up</h1>
+<div className="bg-grey-lighter min-h-screen flex flex-col">
+            <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+                <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+                    <h1 className="mb-8 text-3xl text-center">Sign up</h1>
                     <input 
                     onChange={((e)=> setUserame(e.target.value))}
                         type="text"
-                        class="block border border-grey-light w-full p-3 rounded mb-4"
+                        className="block border border-grey-light w-full p-3 rounded mb-4"
                         name="fullname"
                         placeholder="Full Name" />
 
                     <input 
                     onChange={((e)=> setEmail(e.target.value))}
                         type="text"
-                        class="block border border-grey-light w-full p-3 rounded mb-4"
+                        className="block border border-grey-light w-full p-3 rounded mb-4"
                         name="email"
                         placeholder="Email" />
 
                     <input 
                     onChange={((e)=> setPassword(e.target.value))}
                         type="password"
-                        class="block border border-grey-light w-full p-3 rounded mb-4"
+                        className="block border border-grey-light w-full p-3 rounded mb-4"
                         name="password"
                         placeholder="Password" />
                  
 
                     <button onClick={()=> registerUser()}
                         type="submit"
-                        class="w-full text-center py-3 bg-green bg-blue-400 rounded-lg text-white hover:bg-green-dark focus:outline-none my-1"
+                        className="w-full text-center py-3 bg-green bg-blue-400 rounded-lg text-white hover:bg-green-dark focus:outline-none my-1"
                     >Create Account</button>
 
-                    <div class="text-center text-sm text-grey-dark mt-4">
+                    <div className="text-center text-sm text-grey-dark mt-4">
                         By signing up, you agree to the 
-                        <a class="no-underline border-b border-grey-dark text-grey-dark" href="#">
+                        <a className="no-underline border-b border-grey-dark text-grey-dark" href="#">
                             Terms of Service
                         </a> and 
-                        <a class="no-underline border-b border-grey-dark text-grey-dark" href="#">
+                        <a className="no-underline border-b border-grey-dark text-grey-dark" href="#">
                             Privacy Policy
                         </a>
                     </div>
                 </div>
 
-                <div class="text-grey-dark  mt-6">
+                <div className="text-grey-dark  mt-6">
                     Already have an account? 
-                    <a class="no-underline border-b border-blue text-blue" href="../login/">
+                    <a className="no-underline border-b border-blue text-blue" href="../login/">
                         Log in
                     </a>.
                 </div>
