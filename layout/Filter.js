@@ -1,69 +1,9 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import Cards from "./Cards";
-// const data = [
-//     { img: "pet.png", name: "express", desc: "pet", price: 999, id:2, category: 'Men'  },
-//     { img: "resto.png", name: "mongoose", desc: "retsto", price: 888, id:1, category: 'Women' },
-//     { img: "tech.png", name: "middleware", desc: "tech", price: 222, id:3, category: 'Children' },
-//   ]
+import React from 'react'
 
-const ShoppingList = () => {
-  // const [product, setProduct] = useState(data);
-  const [input, setInput] = useState('')
-  const [formData, setFormData] = useState([])
-  console.log(formData, "hahahahahahaha");
-
-  // console.log(input,'hamza');
-
-  const filterResault=(item)=>{
-    const resault = data.filter((pro)=>
-      pro.category === item
-    )
-    setProduct(resault)
-  }
-
-// useEffect(()=>{
-//   axios
-//     .get("/api/server")
-//     .then(function(response) {
-//       setFormData(response.data.data)
-//         console.log(response)
-//     })
-//     .catch(function(error) {
-//         console.log((error))
-//     });
-// }, [])
-useEffect(() => {
-  ;(async () => {
-    if (!input) {
-      axios.get("/api/server")
-          .then(function(response) {
-            setFormData(response.data.data)
-              console.log(response)
-          })
-          .catch(function(error) {
-              console.log((error))
-          });
-      
-    }else{
-
-      const { data } = await axios.get('/api/server/search', {
-        params: {
-          title: input,
-        },
-      })
-      setFormData(data)
-    }
-
-  })()
-
-}, [input])
-
-
-
+const Filter = () => {
   return (
-    <>
-      <div className="w-full md:w-2/3 shadow m-auto p-5 rounded-lg bg-white">
+   <>
+   <div className="w-full md:w-2/3 shadow m-auto p-5 rounded-lg bg-white">
         <div className="relative">
           <div className="absolute flex items-center ml-2 h-full">
             <svg
@@ -77,7 +17,7 @@ useEffect(() => {
           </div>
 
           <input
-          onChange={(e)=> setInput(e.target.value)}
+          
             type="text"
             placeholder="Search by listing, location, bedroom number..."
             className="px-8 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
@@ -96,7 +36,7 @@ useEffect(() => {
           <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
   
             
-            <select onChange={()=>filterResault('Men')} className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
+            <select className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
               <option value="">All Type</option>
               <option value="for-sale" >Men</option>
               <option value="for-sale">Women</option>
@@ -115,33 +55,8 @@ useEffect(() => {
           </div>
         </div>
       </div>
-
-{
-  formData.map((elements, index)=> (
-
-    <Cards elements={elements} key={index} /> 
-  )
+   </>
   )
 }
 
-
-      {/* {
-      product.sort((a, b)=> b.price - a.price).sort((a, b)=> b.id - a.id ).filter((val)=>{
-        if(input== "")return val
-        else if(val.desc.toLowerCase().includes(input.toLowerCase()) || val.name.toLowerCase().includes(input.toLowerCase()) ) return val
-       
-      })
-      .map((ele)=> (
-        
-       
-        <Cards  price={ele.price} img={ele.img}  desc={ele.desc} />
-  
-      ))} */}
- <div>
-  
- </div>
-    </>
-  );
-};
-
-export default ShoppingList;
+export default Filter

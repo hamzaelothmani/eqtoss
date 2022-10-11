@@ -49,6 +49,7 @@ const Poster = () => {
     <div className='w-20 h-20 m-auto'>
 
 <motion.svg
+
       xmlns="http://www.w3.org/2000/svg"
       x="0"
       y="0"

@@ -1,93 +1,121 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { FaRegCommentDots } from "react-icons/fa";
 import { AiFillLike } from "react-icons/ai";
-const Cards = ({elements}) => {
- const {price, prePrice, title, description, images } = elements
+const Cards = ({ elements }) => {
+  const { price, prePrice, title, description, images } = elements;
 
-console.log(elements, 'hellooo');
+  console.log(elements, "hellooo");
   return (
     <>
-    
- 
-
-        
-{/*  
+      {/*  
         <!-- This example requires Tailwind CSS v2.0+ --> */}
-<div class="bg-white">
-  <div class="max-w-5xl mx-auto px-4 py-16 sm:px-6 sm:py-24">
-    
-
-    <div class="mt-12 space-y-16 sm:mt-16">
-      <section aria-labelledby="4376-heading">
-        <div class="space-y-1 md:flex md:items-baseline md:space-y-0 md:space-x-4">
-          <h2 id="4376-heading" class="text-sm font-medium text-gray-900 md:flex-shrink-0">Posted By Hamza</h2>
-          <div class="space-y-5 md:flex-1 md:min-w-0 sm:flex sm:items-baseline sm:justify-between sm:space-y-0">
-            <p class="text-sm font-medium text-gray-500"> on 10/20/2022</p>
-            <div class="flex text-sm font-medium">
-              <a href="#" class="text-indigo-600 hover:text-indigo-500">Manage order</a>
-              <div class="border-l border-gray-200 ml-4 pl-4 sm:ml-6 sm:pl-6">
-                <a href="#" class="text-indigo-600 hover:text-indigo-500">View Invoice</a>
+      <div class="bg-red-white">
+        <div class="max-w-5xl mx-auto px-4 py-16 sm:px-6 sm:py-10 ">
+          {/* py-16 sm:px-6 sm:py-24 */}
+          <div class="mt-12 space-y-16 sm:mt-16">
+            <section aria-labelledby="4376-heading">
+              <div class="space-y-1 md:flex md:items-baseline md:space-y-0 md:space-x-4">
+                <h2
+                  id="4376-heading"
+                  class="text-sm font-medium text-gray-900 md:flex-shrink-0"
+                >
+                  Posted By Hamza
+                </h2>
+                <div class="space-y-5 md:flex-1 md:min-w-0 sm:flex sm:items-baseline sm:justify-between sm:space-y-0">
+                  <p class="text-sm font-medium text-gray-500">
+                    {" "}
+                    on 10/20/2022
+                  </p>
+                  <div class="flex text-sm font-medium">
+                    <a href="#" class="text-indigo-600 hover:text-indigo-500">
+                      Manage order
+                    </a>
+                    <div class="border-l border-gray-200 ml-4 pl-4 sm:ml-6 sm:pl-6">
+                      <a href="#" class="text-indigo-600 hover:text-indigo-500">
+                        View Invoice
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
+
+              <div class="mt-6 -mb-6 flow-root border-t border-gray-200 divide-y divide-gray-200">
+                <div class="py-6 sm:flex">
+                  <div class="flex space-x-4 sm:min-w-0 sm:flex-1 sm:space-x-6 lg:space-x-8">
+                    <img
+                      src={images[0]}
+                      class="flex-none w-20 h-20 rounded-md object-center object-cover sm:w-48 sm:h-48"
+                    />
+                    <div class="pt-1.5 min-w-0 flex-1 sm:pt-0">
+                      <h3 class="text-sm font-medium text-gray-900">
+                        <a href="#">{title}</a>
+                      </h3>
+                      <p class="text-sm text-gray-500 truncate">
+                        {description}
+                      </p>
+                      <p class="mt-1 font-medium line-through opacity-50 text-gray-900">
+                        {" "}
+                        ${prePrice}{" "}
+                      </p>
+                      <p class="mt-1 font-medium text-gray-900">${price}</p>
+                    </div>
+                  </div>
+                  <div class="mt-6 space-y-4 sm:mt-0 sm:ml-6 sm:flex-none sm:w-40">
+                    <Link
+                      href={{
+                        pathname: "/Infos",
+                        query: elements, // the data
+                      }}
+                    >
+                      
+                      <a
+                        type="button"
+                        class="w-full flex items-center justify-center bg-indigo-600 py-2 px-2.5 border border-transparent rounded-md shadow-sm text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:w-full sm:flex-grow-0"
+                      >
+                        See More Infos
+                      </a>
+                    </Link>
+                    <button
+                      type="button"
+                      class="w-full flex items-center justify-center bg-white py-2 px-2.5 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:w-full sm:flex-grow-0"
+                    >
+                      Shop similar
+                    </button>
+
+                    <div className="flex justify-around pt-14">
+                      <Link href="/Infos#comment">
+                        <button className="hover:-translate-y-0.5 flex gap-2 transform transition text-slate-500 focus:text-black">
+                          <FaRegCommentDots className="w-6  h-6  " />
+                          <span>2</span>
+                        </button>
+                      </Link>
+                      <button className="hover:-translate-y-0.5 flex gap-2 transform transition text-slate-500 focus:text-red-900">
+                        <AiFillLike className="w-6 h-6 " />
+                        <span>2</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* <!-- More products... --> */}
+              </div>
+            </section>
+
+            {/* <!-- More orders... --> */}
           </div>
         </div>
-
-        <div class="mt-6 -mb-6 flow-root border-t border-gray-200 divide-y divide-gray-200">
-          <div class="py-6 sm:flex">
-            <div class="flex space-x-4 sm:min-w-0 sm:flex-1 sm:space-x-6 lg:space-x-8">
-              <img src={images[0]} class="flex-none w-20 h-20 rounded-md object-center object-cover sm:w-48 sm:h-48"/>
-              <div class="pt-1.5 min-w-0 flex-1 sm:pt-0">
-                <h3 class="text-sm font-medium text-gray-900">
-                  <a href="#">{title}</a>
-                </h3>
-                <p class="text-sm text-gray-500 truncate">
-                  {description}
-                 
-                </p>
-                <p class="mt-1 font-medium line-through opacity-50 text-gray-900"> ${prePrice} </p>
-                <p class="mt-1 font-medium text-gray-900">${price}</p>
-              </div>
-            </div>
-            <div class="mt-6 space-y-4 sm:mt-0 sm:ml-6 sm:flex-none sm:w-40">
-              <button type="button" class="w-full flex items-center justify-center bg-indigo-600 py-2 px-2.5 border border-transparent rounded-md shadow-sm text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:w-full sm:flex-grow-0">Buy again</button>
-              <button type="button" class="w-full flex items-center justify-center bg-white py-2 px-2.5 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:w-full sm:flex-grow-0">Shop similar</button>
-              
-
-
-              <div className="flex justify-around pt-14">
-               <Link href='/Infos#comment' ><button className="hover:-translate-y-0.5 flex gap-2 transform transition text-slate-500 focus:text-black">
-                  <FaRegCommentDots className="w-6  h-6  " /><span>2</span>
-                </button></Link> 
-                <button className="hover:-translate-y-0.5 flex gap-2 transform transition text-slate-500 focus:text-red-900">
-                  <AiFillLike className="w-6 h-6 " /><span>2</span>
-                </button>
-              </div>
-       
-      
-      
-            </div>
-          </div>
-
-          {/* <!-- More products... --> */}
-        </div>
-      </section>
-
-      {/* <!-- More orders... --> */}
-    </div>
-  </div>
-</div>
-     
+      </div>
     </>
   );
 };
 
 export default Cards;
 
-
-{/* <div>
+{
+  /* <div>
           <a>
             <Image
              width={400}
@@ -144,8 +172,10 @@ export default Cards;
             </div>
           </div>
         </div>
-        */}
-        {/* <div className="container mx-auto">
+        */
+}
+{
+  /* <div className="container mx-auto">
         
       <Link href='/Infos'>
       
@@ -159,9 +189,13 @@ export default Cards;
               quality={100}
               src={`/GG.jpg`}
               alt=""
-            /> */}
-          {/* <img class="absolute inset-0 h-full w-full object-cover" src="https://images.unsplash.com/photo-1475855581690-80accde3ae2b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt=""/> */}
-        {/* </div>
+            /> */
+}
+{
+  /* <img class="absolute inset-0 h-full w-full object-cover" src="https://images.unsplash.com/photo-1475855581690-80accde3ae2b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt=""/> */
+}
+{
+  /* </div>
         <div className="p-4">
           <span className="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">Highlight</span>
           <h2 className="mt-2 mb-2  font-bold">Purus Ullamcorper Inceptos Nibh</h2>
@@ -189,10 +223,11 @@ export default Cards;
               </div>
        </a>
       </Link>
-      </div> */}
-     
-    
-  {/* <!--
+      </div> */
+}
+
+{
+  /* <!--
     Background backdrop, show/hide based on slide-over state.
 
     Entering: "ease-in-out duration-500"
@@ -201,12 +236,11 @@ export default Cards;
     Leaving: "ease-in-out duration-500"
       From: "opacity-100"
       To: "opacity-0"
-  --> */}
-  
+  --> */
+}
 
-  
-    
-        {/* <!--
+{
+  /* <!--
           Slide-over panel, show/hide based on slide-over state.
 
           Entering: "transform transition ease-in-out duration-500 sm:duration-700"
@@ -215,4 +249,5 @@ export default Cards;
           Leaving: "transform transition ease-in-out duration-500 sm:duration-700"
             From: "translate-x-0"
             To: "translate-x-full"
-        --> */}
+        --> */
+}

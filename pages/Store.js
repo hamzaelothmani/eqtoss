@@ -6,10 +6,12 @@ const Store = () => {
 const [email, setEmail] = useState(["medelothmani481@gmail.com", "hamzasimiller@gmail.com", "medamal2002@gmail.com"])
 const [message, setMessage] = useState('')
 
-const sendData = ()=>{
-console.log('sending');
-  axios.post('/api/contact', {
-    email
+const sendData = async ()=>{
+console.log('sending'); 
+  for(let mail of email){
+
+ await axios.post('/api/contact', {
+    mail
     })
     .then(function (response) {
       console.log(response, 'done');
@@ -17,6 +19,7 @@ console.log('sending');
     .catch(function (error) {
       console.log(error);
     });
+}
 }
 
 

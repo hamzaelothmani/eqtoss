@@ -11,17 +11,17 @@ const PostForm = () => {
   const [category, setCategory] = useState("");
   const [prePrice, setPrePrice] = useState(0);
   const [areImagesLoaded, setareImagesLoaded] = useState(false);
-  const [dataAllowed, setDataAllowed] = useState(false);
+  const [allowed, setAllowed] = useState(false);
   // const [acceptedFiles, setacceptedFiles] = useState();
-  // console.log(areImagesLoaded, "fddddddddddddddddv");
-  // console.log(dataAllowed, "hhhhhhhhhhhhhh");
-  // console.log(images, "images");
-  // console.log(title, "title");
-  // console.log(description, "description");
-  // console.log(category, "category");
-  // console.log(prePrice, "prePrice");
-  // console.log(price, "price");
-  // console.log(url, "url");
+  console.log(areImagesLoaded, "fddddddddddddddddv");
+  console.log(allowed, "hhhhhhhhhhhhhh");
+  console.log(images, "images");
+  console.log(title, "title");
+  console.log(description, "description");
+  console.log(category, "category");
+  console.log(prePrice, "prePrice");
+  console.log(price, "price");
+  console.log(url, "url");
 
   const uploadHandler = async (event) => {
     const files = event.target.files;
@@ -33,7 +33,7 @@ const PostForm = () => {
     }
 
     for (let file of files) {
-      if (file.size > 39000) {
+      if (file.size > 99000) {
         alert("file too big");
         break;
       }
@@ -86,8 +86,8 @@ const PostForm = () => {
     category.length > 0 &&
     price.length > 0 &&
     prePrice.length > 0
-      ? setDataAllowed(true)
-      : setDataAllowed(false);
+      ? setAllowed(true)
+      : setAllowed(false);
   });
 
   return (
@@ -141,7 +141,7 @@ const PostForm = () => {
                     name="about"
                     rows="3"
                     class="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"
-                  />
+                  ></textarea>
                   <p class="mt-2 text-sm text-gray-500">
                     Write a few sentences about your product.
                   </p>
@@ -314,10 +314,10 @@ const PostForm = () => {
               
               <button
                 onClick={() => sendData()}
-                disabled={!dataAllowed && !areImagesLoaded}
+                disabled={!allowed && !areImagesLoaded}
                 type="submit"
                 class={`ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white ${
-                  dataAllowed && areImagesLoaded
+                  allowed && areImagesLoaded
                     ? "bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 "
                     : "bg-slate-500 "
                 }  focus:outline-none focus:ring-2 focus:ring-offset-2 `}

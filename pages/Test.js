@@ -11,17 +11,20 @@ const Test = () => {
   };
 
   const addValue = () => {
-    setValue([
-      ...value,
-      {
-        name: "hamza",
-        text: input,
-        id: Math.random() * 1000,
-        state: false,
-        date: new Date().toLocaleString(),
-      },
-    ]);
-    setInput("");
+    if(input.length > 0){
+      setValue([
+        ...value,
+        {
+          name: "hamza",
+          text: input,
+          id: Math.random() * 1000,
+          state: false,
+          date: new Date().toLocaleString(),
+        },
+      ]);
+      setInput("");
+    }
+ 
   };
 
   return (
@@ -70,6 +73,8 @@ const Test = () => {
           id={ele.id}
         />
       ))} 
+
+
     </>
   );
 };
