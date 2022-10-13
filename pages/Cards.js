@@ -5,36 +5,36 @@ import { useRouter } from "next/router";
 import { FaRegCommentDots } from "react-icons/fa";
 import { AiFillLike } from "react-icons/ai";
 const Cards = ({ elements }) => {
-  const { price, prePrice, title, description, images } = elements;
+  // const { price, prePrice, title, description, images } = elements;
 
   console.log(elements, "hellooo");
   return (
     <>
       {/*  
         <!-- This example requires Tailwind CSS v2.0+ --> */}
-      <div class="bg-red-white">
-        <div class="max-w-5xl mx-auto px-4 py-16 sm:px-6 sm:py-10 ">
+      <div className="bg-red-white">
+        <div className="max-w-5xl mx-auto px-4 py-16 sm:px-6 sm:py-10 ">
           {/* py-16 sm:px-6 sm:py-24 */}
-          <div class="mt-12 space-y-16 sm:mt-16">
+          <div className="mt-12 space-y-16 sm:mt-16">
             <section aria-labelledby="4376-heading">
-              <div class="space-y-1 md:flex md:items-baseline md:space-y-0 md:space-x-4">
+              <div className="space-y-1 md:flex md:items-baseline md:space-y-0 md:space-x-4">
                 <h2
                   id="4376-heading"
-                  class="text-sm font-medium text-gray-900 md:flex-shrink-0"
+                  className="text-sm font-medium text-gray-900 md:flex-shrink-0"
                 >
                   Posted By Hamza
                 </h2>
-                <div class="space-y-5 md:flex-1 md:min-w-0 sm:flex sm:items-baseline sm:justify-between sm:space-y-0">
-                  <p class="text-sm font-medium text-gray-500">
+                <div className="space-y-5 md:flex-1 md:min-w-0 sm:flex sm:items-baseline sm:justify-between sm:space-y-0">
+                  <p className="text-sm font-medium text-gray-500">
                     {" "}
                     on 10/20/2022
                   </p>
-                  <div class="flex text-sm font-medium">
-                    <a href="#" class="text-indigo-600 hover:text-indigo-500">
+                  <div className="flex text-sm font-medium">
+                    <a href="#" className="text-indigo-600 hover:text-indigo-500">
                       Manage order
                     </a>
-                    <div class="border-l border-gray-200 ml-4 pl-4 sm:ml-6 sm:pl-6">
-                      <a href="#" class="text-indigo-600 hover:text-indigo-500">
+                    <div className="border-l border-gray-200 ml-4 pl-4 sm:ml-6 sm:pl-6">
+                      <a href="#" className="text-indigo-600 hover:text-indigo-500">
                         View Invoice
                       </a>
                     </div>
@@ -42,28 +42,28 @@ const Cards = ({ elements }) => {
                 </div>
               </div>
 
-              <div class="mt-6 -mb-6 flow-root border-t border-gray-200 divide-y divide-gray-200">
-                <div class="py-6 sm:flex">
-                  <div class="flex space-x-4 sm:min-w-0 sm:flex-1 sm:space-x-6 lg:space-x-8">
+              <div className="mt-6 -mb-6 flow-root border-t border-gray-200 divide-y divide-gray-200">
+                <div className="py-6 sm:flex">
+                  <div className="flex space-x-4 sm:min-w-0 sm:flex-1 sm:space-x-6 lg:space-x-8">
                     <img
-                      src={images[0]}
-                      class="flex-none w-20 h-20 rounded-md object-center object-cover sm:w-48 sm:h-48"
+                      src={elements?.images[0]}
+                      className="flex-none w-20 h-20 rounded-md object-center object-cover sm:w-48 sm:h-48"
                     />
-                    <div class="pt-1.5 min-w-0 flex-1 sm:pt-0">
-                      <h3 class="text-sm font-medium text-gray-900">
-                        <a href="#">{title}</a>
+                    <div className="pt-1.5 min-w-0 flex-1 sm:pt-0">
+                      <h3 className="text-sm font-medium text-gray-900">
+                        <a href="#">{elements?.title}</a>
                       </h3>
-                      <p class="text-sm text-gray-500 truncate">
-                        {description}
+                      <p className="text-sm text-gray-500 truncate">
+                        {elements?.description}
                       </p>
-                      <p class="mt-1 font-medium line-through opacity-50 text-gray-900">
+                      <p className="mt-1 font-medium line-through opacity-50 text-gray-900">
                         {" "}
-                        ${prePrice}{" "}
+                        ${elements?.prePrice}{" "}
                       </p>
-                      <p class="mt-1 font-medium text-gray-900">${price}</p>
+                      <p className="mt-1 font-medium text-gray-900">${elements?.price}</p>
                     </div>
                   </div>
-                  <div class="mt-6 space-y-4 sm:mt-0 sm:ml-6 sm:flex-none sm:w-40">
+                  <div className="mt-6 space-y-4 sm:mt-0 sm:ml-6 sm:flex-none sm:w-40">
                     <Link
                       href={{
                         pathname: "/Infos",
@@ -73,14 +73,14 @@ const Cards = ({ elements }) => {
                       
                       <a
                         type="button"
-                        class="w-full flex items-center justify-center bg-indigo-600 py-2 px-2.5 border border-transparent rounded-md shadow-sm text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:w-full sm:flex-grow-0"
+                        className="w-full flex items-center justify-center bg-indigo-600 py-2 px-2.5 border border-transparent rounded-md shadow-sm text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:w-full sm:flex-grow-0"
                       >
                         See More Infos
                       </a>
                     </Link>
                     <button
                       type="button"
-                      class="w-full flex items-center justify-center bg-white py-2 px-2.5 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:w-full sm:flex-grow-0"
+                      className="w-full flex items-center justify-center bg-white py-2 px-2.5 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:w-full sm:flex-grow-0"
                     >
                       Shop similar
                     </button>

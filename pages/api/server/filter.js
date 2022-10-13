@@ -9,19 +9,19 @@ export default async function handler(req, res) {
     dbConnect();
 
    if(method === "GET" ){
-    // if(req.query.length > 0){
+  
       
       try {
-        const { title } = req.query
-    // if(title.length > 0){
+        const { category } = req.query
+   
 
-    // }
+ 
         const agg = [
           {
             $search: {
               autocomplete: {
-                query: title,
-                path: 'title',
+                query: category,
+                path: 'category',
                 fuzzy: {
                   maxEdits: 2,
                 },

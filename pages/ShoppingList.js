@@ -34,8 +34,10 @@ const ShoppingList = () => {
 //     });
 // }, [])
 useEffect(() => {
-  ;(async () => {
-    if (!input) {
+  console.log("number of rerender ",1);
+  // ;(async () => {
+    // if (!input) {
+
       axios.get("/api/server")
           .then(function(response) {
             setFormData(response.data.data)
@@ -45,25 +47,25 @@ useEffect(() => {
               console.log((error))
           });
       
-    }else{
+    // }else{
 
-      const { data } = await axios.get('/api/server/search', {
-        params: {
-          title: input,
-        },
-      })
-      setFormData(data)
-    }
+    //   const { data } = await axios.get('/api/server/search', {
+    //     params: {
+    //       title: input,
+    //     },
+    //   })
+    //   setFormData(data)
+    // }
 
-  })()
+  // })()
 
-}, [input])
+}, [])
 
-
-
+console.log(formData,"tgtgtgtgtgtgt");
+if(formData.length!=0){
   return (
     <>
-      <div className="w-full md:w-2/3 shadow m-auto p-5 rounded-lg bg-white">
+      <div className="w-full mt-4 md:w-2/3 shadow m-auto p-5 rounded-lg bg-white">
         <div className="relative">
           <div className="absolute flex items-center ml-2 h-full">
             <svg
@@ -98,9 +100,13 @@ useEffect(() => {
             
             <select onChange={()=>filterResault('Men')} className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
               <option value="">All Type</option>
-              <option value="for-sale" >Men</option>
-              <option value="for-sale">Women</option>
-              <option value="for-sale">Children</option>
+              <option value="for-sale" >Clothes</option>
+              <option value="for-sale">Pets</option>
+              <option value="for-sale">Grocery</option>
+              <option value="">Tech</option>
+              <option value="for-sale" >Gaming</option>
+              <option value="for-sale">Food</option>
+              <option value="for-sale">Travel</option>
             </select>
           
 
@@ -142,6 +148,14 @@ useEffect(() => {
  </div>
     </>
   );
+    }
+  else{
+    return <div>
+      loading
+    </div>
+  }
+
+
 };
 
 export default ShoppingList;

@@ -70,9 +70,9 @@ const Login = ({providers}) => {
                     type="button"
                     data-mdb-ripple="true"
                     data-mdb-ripple-color="light"
-                    className={`inline-block p-3 ${provider.name=="Google" ? "bg-red-600" : "bg-blue-600" }  text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md ${provider.name=="Google" ? "hover:bg-red-700 " : "hover:bg-blue-700" }  hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out mx-1`}
+                    className={`inline-block p-3 ${provider.name=="Google" ? "bg-red-600" : provider.name=="Facebook"?  "bg-blue-600": "" }  text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md ${provider.name=="Google" ? "hover:bg-red-700 " : provider.name=="Facebook"? "hover:bg-blue-700": "" }  hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out mx-1`}
                   >
-                    {provider.name=="Google" ? <BsGoogle className=""/> : <BsFacebook/>}
+                    {provider.name=="Google" ? <BsGoogle className=""/> : provider.name=="Facebook"? <BsFacebook/> : ""}
                   
                     {/* <!-- Linkedin --> */}
                     {/* <svg

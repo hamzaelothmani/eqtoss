@@ -3,8 +3,8 @@ import Head from 'next/head'
 
 import axios from "axios";
 import Router from "next/router";
-
-import { useSession, signIn, getProviders } from "next-auth/react";
+// getProviders
+import { useSession, signIn } from "next-auth/react";
 
 const Register = ({providers}) => {
 
@@ -70,7 +70,7 @@ const Register = ({providers}) => {
        
       </div>
   
-      {Object.values(providers).map((provider) => (
+      {/* {Object.values(providers).map((provider) => (
                     
                     <div key={provider.name}>
                       <div className="pl-4">
@@ -81,7 +81,7 @@ const Register = ({providers}) => {
                             data-mdb-ripple-color="light"
                             className='bg-red-400 rounded'
                           >
-                            hh
+                            hh */}
                           
                             {/* <!-- Linkedin --> */}
                             {/* <svg
@@ -95,10 +95,10 @@ const Register = ({providers}) => {
                                 d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"
                               />
                             </svg> */}
-                          </button>
+                          {/* </button>
                       </div>
                     </div>
-                  ))}
+                  ))} */}
 <div className="bg-grey-lighter min-h-screen flex flex-col">
             <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
                 <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
@@ -156,12 +156,12 @@ const Register = ({providers}) => {
 export default Register
 
 
-export async function getServerSideProps(context) {
-  const providers = await getProviders();
+// export async function getServerSideProps(context) {
+//   const providers = await getProviders();
 
-  return {
-    props: {
-      providers,
-    },
-  };
-}
+//   return {
+//     props: {
+//       providers,
+//     },
+//   };
+// }

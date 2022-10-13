@@ -4,21 +4,21 @@ import axios from "axios";
 
 const PostForm = () => {
   const [images, setImages] = useState([]);
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [url, setUrl] = useState("");
+  const [title, setTitle] = useState(" ");
+  const [description, setDescription] = useState(" ");
+  const [url, setUrl] = useState(" ");
   const [price, setPrice] = useState(0);
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState(" ");
   const [prePrice, setPrePrice] = useState(0);
   const [areImagesLoaded, setareImagesLoaded] = useState(false);
   const [allowed, setAllowed] = useState(false);
   // const [acceptedFiles, setacceptedFiles] = useState();
   console.log(areImagesLoaded, "fddddddddddddddddv");
   console.log(allowed, "hhhhhhhhhhhhhh");
-  console.log(images, "images");
+  console.log(images, "imagesssssssssssssssss");
   console.log(title, "title");
   console.log(description, "description");
-  console.log(category, "category");
+  console.log(category, "categoryyyyyyy");
   console.log(prePrice, "prePrice");
   console.log(price, "price");
   console.log(url, "url");
@@ -28,12 +28,12 @@ const PostForm = () => {
     console.log(files);
 
     let urls = [];
-    if (files.length > 5) {
+    if (files.length > 4) {
       alert("sorry you can choose only max 5 files");
     }
 
     for (let file of files) {
-      if (file.size > 99000) {
+      if (file.size > 5000000) {
         alert("file too big");
         break;
       }
@@ -80,149 +80,154 @@ const PostForm = () => {
 
   useEffect(() => {
     title.length > 0 &&
-    images.length > 0 &&
     url.length > 0 &&
     description.length > 0 &&
     category.length > 0 &&
     price.length > 0 &&
     prePrice.length > 0
+    images.length > 0 
       ? setAllowed(true)
       : setAllowed(false);
   });
 
   return (
     <>
-      <div class=" xl:mx-10 xl:my-10 space-y-8 divide-y divide-gray-200">
-        <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
+      <div className=" xl:mx-10 xl:my-10 space-y-8 divide-y divide-gray-200">
+        <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
           <div>
             <div>
-              <h3 class="text-lg leading-6 font-medium text-gray-900">
+              <h3 className="text-lg leading-6 font-medium text-gray-900">
                 Profile
               </h3>
-              <p class="mt-1 max-w-2xl text-sm text-gray-500">
+              <p className="mt-1 max-w-2xl text-sm text-gray-500">
                 This information will be displayed publicly so be careful what
                 you share.
               </p>
             </div>
 
-            <div class="mt-6 sm:mt-5 space-y-6 sm:space-y-5">
-              <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+            <div className="mt-6 sm:mt-5 space-y-6 sm:space-y-5">
+              <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                 <label
-                  for="about"
-                  class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+                  htmlFor="about"
+                  className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                 >
                   Title
                 </label>
-                <div class="mt-1 sm:mt-0 sm:col-span-2">
+                <div className="mt-1 sm:mt-0 sm:col-span-2">
                   <input
                     onChange={(e) => setTitle(e.target.value)}
                     id="about"
                     name="about"
                     rows="3"
-                    class="max-w-lg shadow-sm block w-full xl:h-10 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"
+                    className="max-w-lg shadow-sm block w-full xl:h-10 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"
                   />
-                  <p class="mt-2 text-sm text-gray-500">
+                  <p className="mt-2 text-sm text-gray-500">
                     Write a few sentences about yourself.
                   </p>
                 </div>
               </div>
 
-              <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+              <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                 <label
-                  for="about"
-                  class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+                  htmlFor="about"
+                  className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                 >
                   Description
                 </label>
-                <div class="mt-1 sm:mt-0 sm:col-span-2">
+                <div className="mt-1 sm:mt-0 sm:col-span-2">
                   <textarea
-                    onClick={(e) => setDescription(e.target.value)}
-                    id="about"
-                    name="about"
+                    onChange={(e) => setDescription(e.target.value)}
+                    id="description"
+                    name="Description"
                     rows="3"
-                    class="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"
-                  ></textarea>
-                  <p class="mt-2 text-sm text-gray-500">
+                    className="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"
+                  />
+                  <p className="mt-2 text-sm text-gray-500">
                     Write a few sentences about your product.
                   </p>
                 </div>
               </div>
 
-              <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+              <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                 <label
-                  for="about"
-                  class="block text-sm  font-medium text-gray-700 sm:mt-px sm:pt-2"
+                  htmlFor="about"
+                  className="block text-sm  font-medium text-gray-700 sm:mt-px sm:pt-2"
                 >
                   Current Price
                 </label>
-                <div class="mt-1 sm:mt-0 sm:col-span-2">
+                <div className="mt-1 sm:mt-0 sm:col-span-2">
                   <input
                     onChange={(e) => setPrice(e.target.value)}
                     id="about"
                     type="number"
                     name="about"
                     rows="3"
-                    class="max-w-lg shadow-sm block xl:h-10 w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"
+                    className="max-w-lg shadow-sm block xl:h-10 w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"
                   />
-                  <p class="mt-2 text-sm text-gray-500">
+                  <p className="mt-2 text-sm text-gray-500">
                     Write a few sentences about yourself.
                   </p>
                 </div>
               </div>
-              <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+              <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                 <label
-                  for="about"
-                  class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+                  htmlFor="about"
+                  className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                 >
                   Previous Price
                 </label>
-                <div class="mt-1 sm:mt-0 sm:col-span-2">
+                <div className="mt-1 sm:mt-0 sm:col-span-2">
                   <input
                     onChange={(e) => setPrePrice(e.target.value)}
                     id="about"
                     type="number"
                     name="about"
                     rows="3"
-                    class="max-w-lg shadow-sm block w-full xl:h-10 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"
+                    className="max-w-lg shadow-sm block w-full xl:h-10 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"
                   />
-                  <p class="mt-2 text-sm text-gray-500">
+                  <p className="mt-2 text-sm text-gray-500">
                     Write a few sentences about yourself.
                   </p>
                 </div>
               </div>
 
-              <div class="sm:grid  sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+              <div className="sm:grid  sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                 <label
-                  for="country"
-                  class="block  text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+                  htmlFor="country"
+                  className="block  text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                 >
                   Category
                 </label>
-                <div class="mt-1 sm:mt-0 sm:col-span-2">
+                <div className="mt-1 sm:mt-0 sm:col-span-2">
                   <select
                     onChange={(e) => setCategory(e.target.value)}
                     id="country"
                     name="country"
-                    autocomplete="country-name"
-                    class="max-w-lg h-10 block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                    autoComplete="country-name"
+                    className="max-w-lg h-10 block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                   >
-                    <option>United States</option>
-                    <option>Canada</option>
-                    <option>Mexico</option>
+                    <option >All Type</option>
+                    <option >Clothes</option>
+                    <option >Pets</option>
+                    <option >Grocery</option>
+                    <option >Tech</option>
+                    <option >Gaming</option>
+                    <option >Food</option>
+                    <option >Travel</option>
                   </select>
                 </div>
               </div>
 
-              <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+              <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                 <label
-                  for="username"
-                  class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+                  htmlFor="username"
+                  className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                 >
                   Online Shop
                 </label>
-                <div class="mt-1 sm:mt-0 sm:col-span-2">
-                  <div class="max-w-lg flex rounded-md shadow-sm">
-                    <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">
+                <div className="mt-1 sm:mt-0 sm:col-span-2">
+                  <div className="max-w-lg flex rounded-md shadow-sm">
+                    <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">
                       workcation.com/
                     </span>
                     <input
@@ -230,25 +235,25 @@ const PostForm = () => {
                       type="text"
                       name="username"
                       id="username"
-                      autocomplete="username"
-                      class="flex-1 xl:h-10 block w-full focus:ring-indigo-500 focus:border-indigo-500 min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
+                      autoComplete="username"
+                      className="flex-1 xl:h-10 block w-full focus:ring-indigo-500 focus:border-indigo-500 min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
                     />
                   </div>
                 </div>
               </div>
 
-              <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+              <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                 <label
-                  for="cover-photo"
-                  class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+                  htmlFor="cover-photo"
+                  className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                 >
                   Product images
                 </label>
-                <div class="mt-1 sm:mt-0 sm:col-span-2">
-                  <div class="max-w-lg flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-                    <div class="space-y-1 text-center">
+                <div className="mt-1 sm:mt-0 sm:col-span-2">
+                  <div className="max-w-lg flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                    <div className="space-y-1 text-center">
                       <svg
-                        class="mx-auto h-12 w-12 text-gray-400"
+                        className="mx-auto h-12 w-12 text-gray-400"
                         stroke="currentColor"
                         fill="none"
                         viewBox="0 0 48 48"
@@ -256,34 +261,34 @@ const PostForm = () => {
                       >
                         <path
                           d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
-                      <div class="flex text-sm text-gray-600">
+                      <div className="flex text-sm text-gray-600">
                         <label
-                          for="file-upload"
-                          class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+                          htmlFor="file-upload"
+                          className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
                         >
                           <span>Upload a file</span>
                           <input
                             id="file-upload"
                             name="file-upload"
                             type="file"
-                            class="sr-only"
+                            className="sr-only"
                             onChange={(event) => uploadHandler(event)}
                             multiple
                             accept="image/png, image/gif, image/jpeg"
-                            // class="sr-only"
+                            // className="sr-only"
                           />
                         </label>
-                        <p class="pl-1">or drag and drop</p>
+                        <p className="pl-1">or drag and drop</p>
                       </div>
-                      <p class="text-xs text-gray-500">
+                      <p className="text-xs text-gray-500">
                         PNG, JPG, GIF up to 10MB
                       </p>
-                      <p class="text-xs text-gray-500">
+                      <p className="text-xs text-gray-500">
                         (4 files are the maximum number <br></br>of files you
                         can drop here)
                       </p>
@@ -301,22 +306,20 @@ const PostForm = () => {
             </div>
           </div>
 
-          <div class="pt-5">
-            <div class="flex justify-end">
+          <div className="pt-5">
+            <div className="flex justify-end">
               <button
                 type="button"
-                class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
                 Cancel
               </button>
 
-
-              
               <button
                 onClick={() => sendData()}
                 disabled={!allowed && !areImagesLoaded}
                 type="submit"
-                class={`ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white ${
+                className={`ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white ${
                   allowed && areImagesLoaded
                     ? "bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 "
                     : "bg-slate-500 "
