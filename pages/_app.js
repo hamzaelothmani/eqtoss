@@ -1,6 +1,6 @@
 import Layout from '../layout/Layout'
 import '../styles/globals.css'
-import { TodosProvider } from './contexts/Context';
+// import { TodosProvider } from './contexts/Context';
 
 
 import { SessionProvider } from "next-auth/react";
@@ -12,13 +12,13 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
     <>
 <SessionProvider session={session} >
 
-<TodosProvider>
+{/* <TodosProvider> */}
 
 
     <Layout>
     <Component {...pageProps} />
     </Layout>
-</TodosProvider>
+{/* </TodosProvider> */}
 
 
 
