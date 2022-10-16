@@ -16,15 +16,15 @@ export default async function handler(req, res) {
    
 
  
-        const agg = [
+        const ajj = [
           {
             $search: {
               autocomplete: {
                 query: category,
                 path: 'category',
-                fuzzy: {
-                  maxEdits: 2,
-                },
+                // fuzzy: {
+                //   maxEdits: 2,
+                // },
               },
             },
           },
@@ -45,12 +45,12 @@ export default async function handler(req, res) {
           },
         ]
     
-        const response = await Poster.aggregate(agg)
+        const resp = await Poster.aggregate(ajj)
     
-        return res.json(response)
-      } catch (error) {
-        console.log(error)
-        return res.json([])
+        return res.json(resp)
+      } catch (err) {
+        console.log(err)
+        return res.json([], "haaaaaaaaaaaaaaaaaaa")
       }
 
     // }else {

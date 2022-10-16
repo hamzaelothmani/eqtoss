@@ -11,9 +11,25 @@ const ShoppingList = () => {
   // const [product, setProduct] = useState(data);
   const [input, setInput] = useState('')
   const [formData, setFormData] = useState([])
+  const [pageCount, setPageCount] = useState(5)
+  const [page, setPage] = useState(0)
+  console.log(page, "pageeeeeeee");
   console.log(formData, "hahahahahahaha");
 
   // console.log(input,'hamza');
+  const handlePrevious=()=>{
+    setPage((p)=>{
+      if(p=== 1) return p
+      return p - 1
+    })
+  }
+  const handleNext=()=>{
+setPage((n)=>{
+  if(n=== pageCount ) return n
+  return n + 1
+
+})
+  }
 
   const filterResault=(item)=>{
     const resault = data.filter((pro)=>
@@ -34,11 +50,9 @@ const ShoppingList = () => {
 //     });
 // }, [])
 useEffect(() => {
-  console.log("number of rerender ",1);
-  // ;(async () => {
-    // if (!input) {
-
-      axios.get("/api/server")
+  ;(async () => {
+    if (!input) {
+      axios.get(`/api/server?page=${page}`)
           .then(function(response) {
             setFormData(response.data.data)
               console.log(response)
@@ -47,22 +61,22 @@ useEffect(() => {
               console.log((error))
           });
       
-    // }else{
+    }else{
 
-    //   const { data } = await axios.get('/api/server/search', {
-    //     params: {
-    //       title: input,
-    //     },
-    //   })
-    //   setFormData(data)
-    // }
+      const { data } = await axios.get('/api/server/search', {
+        params: {
+          title: input,
+        },
+      })
+      setFormData(data)
+    }
 
-  // })()
+  })()
 
-}, [])
+}, [input, page])
 
-console.log(formData,"tgtgtgtgtgtgt");
-if(formData.length!=0){
+
+
   return (
     <>
       <div className="w-full mt-4 md:w-2/3 shadow m-auto p-5 rounded-lg bg-white">
@@ -129,6 +143,38 @@ if(formData.length!=0){
   )
   )
 }
+{/* <!-- This example requires Tailwind CSS v2.0+ --> */}
+
+<nav class="border-t xl:mx-20 border-gray-200 px-4 flex items-center justify-between sm:px-0">
+  <div class="-mt-px w-0 flex-1 flex">
+    <button disabled={page === 1} onClick={handlePrevious} href="#" class="border-t-2 border-transparent pt-4 pr-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
+      {/* <!-- Heroicon name: solid/arrow-narrow-left --> */}
+      <svg class="mr-3 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+      </svg>
+      Previous
+    </button>
+  </div>
+  <div class="hidden md:-mt-px md:flex">
+    <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"> 1 </a>
+    {/* <!-- Current: "border-indigo-500 text-indigo-600", Default: "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" --> */}
+    <a href="#" class="border-indigo-500 text-indigo-600 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium" aria-current="page"> 2 </a>
+    <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"> 3 </a>
+    {/* <span class="border-transparent text-gray-500 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"> ... </span> */}
+    <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"> 8 </a>
+    <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"> 9 </a>
+    <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"> 10 </a>
+  </div>
+  <div class="-mt-px w-0 flex-1 flex justify-end">
+    <button disabled={page === pageCount} onClick={handleNext} href="#" class="border-t-2 border-transparent pt-4 pl-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
+      Next
+      {/* <!-- Heroicon name: solid/arrow-narrow-right --> */}
+      <svg class="ml-3 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+      </svg>
+    </button>
+  </div>
+</nav>
 
 
       {/* {
@@ -148,14 +194,6 @@ if(formData.length!=0){
  </div>
     </>
   );
-    }
-  else{
-    return <div>
-      loading
-    </div>
-  }
-
-
 };
 
 export default ShoppingList;

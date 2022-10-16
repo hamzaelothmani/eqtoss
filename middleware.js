@@ -47,4 +47,4 @@ export default withAuth({
   },
 })
 
-export const config = { matcher: ["/Deals"] }
+export const config = { matcher: ["/PostForm"] }

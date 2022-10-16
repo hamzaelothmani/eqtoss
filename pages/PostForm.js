@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
+import Link from "next/link";
 
 import axios from "axios";
 
@@ -33,7 +34,7 @@ const PostForm = () => {
     }
 
     for (let file of files) {
-      if (file.size > 5000000) {
+      if (file.size > 9900000) {
         alert("file too big");
         break;
       }
@@ -308,16 +309,16 @@ const PostForm = () => {
 
           <div className="pt-5">
             <div className="flex justify-end">
-              <button
+            <Link href='/' ><button
                 type="button"
                 className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
                 Cancel
-              </button>
+              </button></Link>
 
-              <button
+            <Link href='/' ><button
                 onClick={() => sendData()}
-                disabled={!allowed && !areImagesLoaded}
+                disabled={allowed == false && areImagesLoaded == false }
                 type="submit"
                 className={`ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white ${
                   allowed && areImagesLoaded
@@ -326,7 +327,7 @@ const PostForm = () => {
                 }  focus:outline-none focus:ring-2 focus:ring-offset-2 `}
               >
                 Save
-              </button>
+              </button></Link>
             </div>
           </div>
         </div>

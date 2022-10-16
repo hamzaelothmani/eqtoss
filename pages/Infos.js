@@ -62,7 +62,7 @@ else{
       {/* <!-- Image gallery --> */}
       <div className="flex flex-col-reverse">
         {/* <!-- Image selector --> */}
-        <div className=" mx-5 mt-6 w-full max-w-lg xl:mx-auto sm:block lg:max-w-none">
+        <div className=" px-4 mt-6 w-full max-w-lg xl:mx-auto sm:block lg:max-w-none">
           <div className="grid grid-cols-4 gap-6" aria-orientation="horizontal" role="tablist">
          {
          images.map((item, index)=> (

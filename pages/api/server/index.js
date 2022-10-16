@@ -9,7 +9,10 @@ export default async function handler(req, res) {
   switch (method) {
     case "GET":
       try {
-        const clients = await Poster.find({});
+        const page = req.query.page || 1
+        const sort = req.query.page 
+        const products = 2
+        const clients = await Poster.find({}).sort([[sort, -1]]).skip(page * products).limit(products);
         res.status(200).json({success: true, data:clients });
       } catch (error) {
         console.log(error);
