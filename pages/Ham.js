@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 
 const Ham = () => {
-  const [sort, setSort] = useState('createdAt')
+  const [sort, setSort] = useState('price')
   const [filter, setFilter] = useState('')
 
 useEffect(()=>{

@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 
 import axios from "axios";
 
@@ -13,16 +14,20 @@ const PostForm = () => {
   const [prePrice, setPrePrice] = useState(0);
   const [areImagesLoaded, setareImagesLoaded] = useState(false);
   const [allowed, setAllowed] = useState(false);
+  // const [save, setSave] = useState(false)
+  const { data: session, status } = useSession();
+  const [userEmail, setUserEmail] = useState(session?.user.email)
+  console.log(userEmail, 'hiuhdfiozehczihe');
   // const [acceptedFiles, setacceptedFiles] = useState();
-  console.log(areImagesLoaded, "fddddddddddddddddv");
-  console.log(allowed, "hhhhhhhhhhhhhh");
-  console.log(images, "imagesssssssssssssssss");
-  console.log(title, "title");
-  console.log(description, "description");
-  console.log(category, "categoryyyyyyy");
-  console.log(prePrice, "prePrice");
-  console.log(price, "price");
-  console.log(url, "url");
+  // console.log(areImagesLoaded, "fddddddddddddddddv");
+  // console.log(allowed, "hhhhhhhhhhhhhh");
+  // console.log(images, "imagesssssssssssssssss");
+  // console.log(title, "title");
+  // console.log(description, "description");
+  // console.log(category, "categoryyyyyyy");
+  // console.log(prePrice, "prePrice");
+  // console.log(price, "price");
+  // console.log(url, "url");
 
   const uploadHandler = async (event) => {
     const files = event.target.files;
@@ -70,6 +75,8 @@ const PostForm = () => {
         category,
         images,
         prePrice,
+        userEmail,
+        //  save
       })
       .then(function (response) {
         console.log(response);

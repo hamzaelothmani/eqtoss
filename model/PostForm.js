@@ -14,7 +14,6 @@ const postForm = new mongoose.Schema({
   prePrice : {
     type: Number,
         required: true,
-       
   },
   url : {
     type: String,
@@ -29,8 +28,17 @@ const postForm = new mongoose.Schema({
     type: String,
     required: true,
   },
+userEmail: {
+  type: String,
+  required: true,
+},
+save :{
+  type: Boolean,
+   default: false
+},
   images:{ type : Array , "default" : [] }
 },
+
 {
     timestamps: true
 }

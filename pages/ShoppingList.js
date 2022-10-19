@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Cards from "./Cards";
+import { BsArrowDownCircleFill, BsFillArrowUpCircleFill } from "react-icons/bs";
 // const data = [
 //     { img: "pet.png", name: "express", desc: "pet", price: 999, id:2, category: 'Men'  },
 //     { img: "resto.png", name: "mongoose", desc: "retsto", price: 888, id:1, category: 'Women' },
@@ -13,13 +14,17 @@ const ShoppingList = () => {
   const [formData, setFormData] = useState([])
   const [pageCount, setPageCount] = useState(5)
   const [page, setPage] = useState(0)
-  console.log(page, "pageeeeeeee");
-  console.log(formData, "hahahahahahaha");
+  const [sortt, setSortt] = useState('Date')
+  const [filterr, setFilterr] = useState('All')
+  const [orderBy, setOrderBy] = useState(1)
+  // console.log(filterr, "zzzzzzzzzzzz");
+  // console.log(page, "pageeeeeeee");
+  // console.log(formData, "hahahahahahaha");
 
-  // console.log(input,'hamza');
+  console.log(orderBy,'hamzaaa');
   const handlePrevious=()=>{
     setPage((p)=>{
-      if(p=== 1) return p
+      if(p === 0) return p
       return p - 1
     })
   }
@@ -52,7 +57,7 @@ setPage((n)=>{
 useEffect(() => {
   ;(async () => {
     if (!input) {
-      axios.get(`/api/server?page=${page}`)
+      axios.get(`/api/server?page=${page}&filterr=${filterr}&sortt=${sortt}&orderBy=${orderBy}`)
           .then(function(response) {
             setFormData(response.data.data)
               console.log(response)
@@ -73,7 +78,7 @@ useEffect(() => {
 
   })()
 
-}, [input, page])
+}, [input, page, filterr, sortt, orderBy])
 
 
 
@@ -112,24 +117,33 @@ useEffect(() => {
           <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
   
             
-            <select onChange={()=>filterResault('Men')} className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
-              <option value="">All Type</option>
-              <option value="for-sale" >Clothes</option>
-              <option value="for-sale">Pets</option>
-              <option value="for-sale">Grocery</option>
-              <option value="">Tech</option>
-              <option value="for-sale" >Gaming</option>
-              <option value="for-sale">Food</option>
-              <option value="for-sale">Travel</option>
-            </select>
+            <select onChange={(e)=>setFilterr(e.target.value)} className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
+            <option >All</option>
+                    <option >Clothes</option>
+                    <option >Pets</option>
+                    <option >Grocery</option>
+                    <option >Tech</option>
+                    <option >Gaming</option>
+                    <option >Food</option>
+                    <option >Travel</option>
+                    </select>
           
 
-            <select className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
-              <option value="">Furnish Type</option>
-              <option value="fully-furnished">Fully Furnished</option>
-              <option value="partially-furnished">Partially Furnished</option>
-              <option value="not-furnished">Not Furnished</option>
+            <select onChange={(e)=> setSortt(e.target.value)} className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
+              <option>Date</option>
+              <option>price</option>
+              
+
+             
             </select>
+            <select onChange={(e)=> setOrderBy(e.target.value)} className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
+              <option value={1}>lowest {sortt}  </option>
+              <option value={-1}>highest {sortt} </option>
+              
+
+             
+            </select>
+        
 
            
           </div>
@@ -145,32 +159,32 @@ useEffect(() => {
 }
 {/* <!-- This example requires Tailwind CSS v2.0+ --> */}
 
-<nav class="border-t xl:mx-20 border-gray-200 px-4 flex items-center justify-between sm:px-0">
-  <div class="-mt-px w-0 flex-1 flex">
-    <button disabled={page === 1} onClick={handlePrevious} href="#" class="border-t-2 border-transparent pt-4 pr-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
+<nav className="border-t xl:mx-20 border-gray-200 px-4 flex items-center justify-between sm:px-0">
+  <div className="-mt-px w-0 flex-1 flex">
+    <button disabled={page === 0} onClick={handlePrevious} href="#" className="border-t-2 border-transparent pt-4 pr-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
       {/* <!-- Heroicon name: solid/arrow-narrow-left --> */}
-      <svg class="mr-3 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-        <path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+      <svg className="mr-3 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path fillRule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd" />
       </svg>
       Previous
     </button>
   </div>
-  <div class="hidden md:-mt-px md:flex">
-    <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"> 1 </a>
+  <div className="hidden md:-mt-px md:flex">
+    <a href="#" className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"> 1 </a>
     {/* <!-- Current: "border-indigo-500 text-indigo-600", Default: "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" --> */}
-    <a href="#" class="border-indigo-500 text-indigo-600 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium" aria-current="page"> 2 </a>
-    <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"> 3 </a>
-    {/* <span class="border-transparent text-gray-500 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"> ... </span> */}
-    <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"> 8 </a>
-    <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"> 9 </a>
-    <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"> 10 </a>
+    <a href="#" className="border-indigo-500 text-indigo-600 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium" aria-current="page"> 2 </a>
+    <a href="#" className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"> 3 </a>
+    {/* <span className="border-transparent text-gray-500 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"> ... </span> */}
+    <a href="#" className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"> 8 </a>
+    <a href="#" className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"> 9 </a>
+    <a href="#" className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"> 10 </a>
   </div>
-  <div class="-mt-px w-0 flex-1 flex justify-end">
-    <button disabled={page === pageCount} onClick={handleNext} href="#" class="border-t-2 border-transparent pt-4 pl-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
+  <div className="-mt-px w-0 flex-1 flex justify-end">
+    <button disabled={page === pageCount} onClick={handleNext} href="#" className="border-t-2 border-transparent pt-4 pl-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
       Next
       {/* <!-- Heroicon name: solid/arrow-narrow-right --> */}
-      <svg class="ml-3 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-        <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+      <svg className="ml-3 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
       </svg>
     </button>
   </div>

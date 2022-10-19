@@ -12,16 +12,12 @@ import { SiGmail } from "react-icons/si";
 
 const Infos = () => {
   
-  //   const [img , setImg] = useState([
-  //     "https://res.cloudinary.com/dg8bm9sad/image/upload/v1665155793/My%20Uploads/iyrntin8blwbo9sl2w7a.png",
-  //     "https://res.cloudinary.com/dg8bm9sad/image/upload/v1665155794/My%20Uploads/iley15phqzze1lxduc8v.png",
-  //     "https://res.cloudinary.com/dg8bm9sad/image/upload/v1665155795/My%20Uploads/l2noszwoohbbluyqe7ua.png"
-  // ])
+
     const [index, setIndex] = useState(0)
 
     const router = useRouter();
     const elements = router.query;
-    // console.log(elements.images, 'tttttttttttttttttttttttt');
+    
     const { price, prePrice, title, description, images } = elements;
     console.log(elements,"hgjgbgbgbhgb")
 useEffect(()=>{

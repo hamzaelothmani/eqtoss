@@ -1,12 +1,26 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import axios from "axios";
 import { useRouter } from "next/router";
 import { FaRegCommentDots } from "react-icons/fa";
 import { AiFillLike } from "react-icons/ai";
+import { MdOutlineBookmarkAdd } from "react-icons/md";
 const Cards = ({ elements }) => {
   // const { price, prePrice, title, description, images } = elements;
 
+
+   const saveData=()=>{
+    axios.patch('/api/server',
+            { save: true },
+            // , 'X-CSRF-TOKEN': crsfToken 
+            { headers: { 'Content-Type': 'application/json'}, }
+        ).then((response) => {
+            // Code
+        }).catch((error) => {
+            // Code
+        })
+   }
   console.log(elements, "hellooo");
   return (
     <>
@@ -15,7 +29,13 @@ const Cards = ({ elements }) => {
       <div className="bg-red-white">
         <div className="max-w-5xl mx-auto px-4 py-16 sm:px-6 sm:py-10 ">
           {/* py-16 sm:px-6 sm:py-24 */}
-          <div className="mt-12 space-y-16 sm:mt-16">
+          <div className=" space-y-16 sm:mt-16">
+          <Link
+                      href={{
+                        pathname: "/Infos",
+                        query: elements, // the data
+                      }}
+                    >
             <section aria-labelledby="4376-heading">
               <div className="space-y-1 md:flex md:items-baseline md:space-y-0 md:space-x-4">
                 <h2
@@ -30,14 +50,7 @@ const Cards = ({ elements }) => {
                     on 10/20/2022
                   </p>
                   <div className="flex text-sm font-medium">
-                    <a href="#" className="text-indigo-600 hover:text-indigo-500">
-                      Manage order
-                    </a>
-                    <div className="border-l border-gray-200 ml-4 pl-4 sm:ml-6 sm:pl-6">
-                      <a href="#" className="text-indigo-600 hover:text-indigo-500">
-                        View Invoice
-                      </a>
-                    </div>
+                 <button><MdOutlineBookmarkAdd className="w-6 h-6" /></button> 
                   </div>
                 </div>
               </div>
@@ -64,12 +77,7 @@ const Cards = ({ elements }) => {
                     </div>
                   </div>
                   <div className="mt-6 space-y-4 sm:mt-0 sm:ml-6 sm:flex-none sm:w-40">
-                    <Link
-                      href={{
-                        pathname: "/Infos",
-                        query: elements, // the data
-                      }}
-                    >
+                  
                       
                       <a
                         type="button"
@@ -77,15 +85,16 @@ const Cards = ({ elements }) => {
                       >
                         See More Infos
                       </a>
-                    </Link>
+                    
                     <button
                       type="button"
                       className="w-full flex items-center justify-center bg-white py-2 px-2.5 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:w-full sm:flex-grow-0"
                     >
-                      Shop similar
+                      <MdOutlineBookmarkAdd className="w-6 h-6" />
                     </button>
 
-                    <div className="flex justify-around pt-14">
+                    <div className="flex justify-around xl:pt-14 sm:pt">
+                      {/* <Link href="/Infos#comment"> */}
                       <Link href="/Infos#comment">
                         <button className="hover:-translate-y-0.5 flex gap-2 transform transition text-slate-500 focus:text-black">
                           <FaRegCommentDots className="w-6  h-6  " />
@@ -103,7 +112,7 @@ const Cards = ({ elements }) => {
                 {/* <!-- More products... --> */}
               </div>
             </section>
-
+</Link>
             {/* <!-- More orders... --> */}
           </div>
         </div>
