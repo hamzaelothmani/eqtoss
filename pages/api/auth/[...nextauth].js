@@ -17,7 +17,16 @@ export default NextAuth({
   providers: [
     GoogleProvider({
         clientId: process.env.GOOGLE_CLIENT_ID,
-        clientSecret: process.env.GOOGLE_CLIENT_SECRET
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      //   profile(profile) {
+      //     return {
+      //        id: profile.id,
+      //        name: profile.name,
+      //        email: profile.email,
+      //        image: profile.avatar_url,
+      //        role: 'USER',
+      //     }
+      //  },
     }),
     FacebookProvider({
       clientId: process.env.FACEBOOK_CLIENT_ID,
