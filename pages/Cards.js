@@ -6,22 +6,13 @@ import { useRouter } from "next/router";
 import { FaRegCommentDots } from "react-icons/fa";
 import { AiFillLike } from "react-icons/ai";
 import { MdOutlineBookmarkAdd } from "react-icons/md";
-const Cards = ({ elements }) => {
-  // const { price, prePrice, title, description, images } = elements;
+const Cards = ({ elements, id, patchData, patch }) => {
+  console.log(id, 'false alarm');
+  console.log(patch, 'zzzzzzzzzzzzzz');
+  
 
 
-   const saveData=()=>{
-    axios.patch('/api/server',
-            { save: true },
-            // , 'X-CSRF-TOKEN': crsfToken 
-            { headers: { 'Content-Type': 'application/json'}, }
-        ).then((response) => {
-            // Code
-        }).catch((error) => {
-            // Code
-        })
-   }
-  console.log(elements, "hellooo");
+  console.log(elements, "hellooooooooooo");
   return (
     <>
       {/*  
@@ -87,6 +78,7 @@ const Cards = ({ elements }) => {
                       </a>
                     
                     <button
+                    onClick={()=>patchData(elements._id)}
                       type="button"
                       className="w-full flex items-center justify-center bg-white py-2 px-2.5 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:w-full sm:flex-grow-0"
                     >

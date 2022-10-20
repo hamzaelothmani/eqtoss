@@ -17,7 +17,8 @@ const ShoppingList = () => {
   const [sortt, setSortt] = useState('Date')
   const [filterr, setFilterr] = useState('All')
   const [orderBy, setOrderBy] = useState(1)
-  // console.log(filterr, "zzzzzzzzzzzz");
+  const [patch, setPatch] = useState([])
+  console.log(patch, "zzzzzzzzzzzz");
   // console.log(page, "pageeeeeeee");
   // console.log(formData, "hahahahahahaha");
 
@@ -81,7 +82,27 @@ useEffect(() => {
 }, [input, page, filterr, sortt, orderBy])
 
 
-
+const patchData = async (id) => {
+  let url = []
+  
+  url.push(id)
+  setPatch(url)
+  console.log( 'patchiiiiix');
+  await axios
+    .patch(
+      `/api/6351b8a2193ff6fcd8bd887a`,
+      { savePro: url },
+      {
+        headers: { "Content-type": "application/json; charset=UTF-8" },
+      }
+    )
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error, "ffffff");
+    });
+};
   return (
     <>
       <div className="w-full mt-4 md:w-2/3 shadow m-auto p-5 rounded-lg bg-white">
@@ -153,7 +174,7 @@ useEffect(() => {
 {
   formData.map((elements, index)=> (
 
-    <Cards elements={elements} key={index} /> 
+    <Cards elements={elements} patch={patch} id={elements._id} key={index} patchData={patchData} /> 
   )
   )
 }

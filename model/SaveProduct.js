@@ -3,10 +3,9 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-  name: {
+  id: {
     type: String,
     required: true,
-    // requeired: true,
     unique: true,
   },
   email: {
@@ -14,15 +13,15 @@ const userSchema = new Schema({
     required: true,
     unique: true,
   },
-  hashedPassword: {
+  name: {
     type: String,
     required: true,
-    minlength: 5,
+    // minlength: 5,
   },
-  image: {
-    type: String,
+  savePro: {
+    type : Array , "default" : []
   },
 });
 
-const User = mongoose.models.User || mongoose.model("User", userSchema);
-export default User;
+const SaveProduct = mongoose.models.SaveProduct || mongoose.model("SaveProduct", userSchema);
+export default SaveProduct;
