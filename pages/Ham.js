@@ -17,8 +17,8 @@ const Ham = () => {
   console.log(session,'hello baby');
      await axios
        .post("/api/server/saveProduct", {
-      name : "hello",
-      email: "hamziix200@gmail.com",
+      name : session.user.name,
+      email: session.user.email,
       id: uuidv4()
       
        })

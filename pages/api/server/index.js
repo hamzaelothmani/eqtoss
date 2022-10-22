@@ -17,7 +17,7 @@ export default async function handler(req, res) {
         // .where({category: filterr}).sort({createdAt: -1})
         // .sort({sort: 1})
         // .where({category: filter})
-        const products = 2
+        const products = 4
         const clients = await Poster.find({ category: ( filterr === "All" && {$exists: true}  ||filterr ||  {$exists: true}) }).sort([[(sortt== "Date" ? "createdAt": sortt), orderBy]]).skip(page * products).limit(products).exec();
         res.status(200).json({success: true, data:clients });
       } catch (error) {

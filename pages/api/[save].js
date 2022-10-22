@@ -25,9 +25,12 @@ export default async (req, res) => {
       break;
     case "PATCH":
       try {
-        const note = await SaveProduct.findByIdAndUpdate(save, req.body, {
+        const note = await SaveProduct.findOneAndUpdate({email: save}, { $addToSet:{
+          savePro: req.body.id
+        } }, {
           new: true,
         });
+        
         if (!note) {
           return res.status(400).json({ success: false });
         }
@@ -36,6 +39,17 @@ export default async (req, res) => {
         res.status(400).json({ success: false, data: "dd" });
       }
       break;
+    // case "POST":
+    //   try {
+    //     const note = await SaveProduct.updateOne(save, req.body);
+    //     if (!note) {
+    //       return res.status(400).json({ success: false });
+    //     }
+    //     res.status(200).json({ success: true, data: note });
+    //   } catch (error) {
+    //     res.status(400).json({ success: false, data: "dd" });
+    //   }
+    //   break;
     case "PUT":
       try {
         const { name, description } = req.body;

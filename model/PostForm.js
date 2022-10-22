@@ -32,7 +32,7 @@ userEmail: {
   type: String,
   required: true,
 },
-save :{
+savix :{
   type: Boolean,
    default: false
 },

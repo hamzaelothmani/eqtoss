@@ -1,29 +1,20 @@
-import React from "react";
-import axios from "axios";
+import React from 'react'
 
 const Poster = () => {
-  const sendShit = async () => {
-    await axios
-      .patch(
-        "/api/6351b8a2193ff6fcd8bd887a",
-        { savePro: "6351b8a2193ff6fcd8bd887a" },
-        {
-          headers: { "Content-type": "application/json; charset=UTF-8" },
-        }
-      )
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error, "ffffff");
-      });
-  };
   return (
-    <>
-      <h1>hello</h1>
-      <button onClick={() => sendShit()}> click shiiit </button>
-    </>
-  );
-};
+   <>
+<div class="flex flex-col items-center justify-center min-h-screen p-5 bg-gray-100 min-w-screen">
 
-export default Poster;
+ <h1 className='mb-2 text-2xl text-gray-500'>Loading</h1>
+<div class="flex relative space-x-2 animate-pulse">
+    <div class="w-3 h-3 bg-gray-500 rounded-full"></div>
+    <div class="w-3 h-3 bg-gray-500 rounded-full"></div>
+    <div class="w-3 h-3 bg-gray-500 rounded-full"></div>
+</div>
+
+</div>
+   </>
+  )
+}
+
+export default Poster
