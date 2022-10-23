@@ -56,18 +56,18 @@ useEffect(()=>{
     
       <motion.p  animate={{ y: 0, opacity: 1}}
                 transition={{
-                  duration: 1,
+                  duration: 0.5,
                 delay: 0.5
                 
                 }}
-                initial={{ opacity: 0, y: 10 }}
-                whileHover={{ scale: 1.2 }} className="text-4xl font-bold md:text-7xl text-orange-600">25% OFF</motion.p>
-      <p className="text-4xl font-bold md:text-7xl">SUMMER SALE</p>
+                initial={{ opacity: 0, y: 5 }}
+                whileHover={{ scale: 1.2 }} className="text-4xl font-bold md:text-7xl  text-violet-800">UP TO 80% OFF</motion.p>
+      <p className="text-4xl font-bold md:text-7xl">EVERYDAY SALE</p>
       <p className="mt-2 text-sm md:text-lg">For limited time only!</p>
       <Link href='/ShoppingList' ><button  className="text-lg md:text-2xl bg-black text-white py-2 px-5 mt-10 hover:bg-zinc-800">Shop Now</button></Link>
     </div>
     <div className="w-[300px] h-[300px] xl:w-[600px] xl:h-[500px] order-1 lg:order-2">
-      <Image width={500} height={400} objectFit="contain" layout="responsive"  quality={75}   src="/images/home1.png" alt=""/>
+      <Image width={500} height={400} objectFit="contain" layout="responsive"  quality={75} priority={true}   src="/images/home1.png" alt=""/>
     </div>
   </div>
 </section>
@@ -237,7 +237,7 @@ eQToss follows the guidance of Web Content Accessibility Guidelines 2.1 (WCAG 2.
 </section>
 
 {/* <!-- This example requires Tailwind CSS v2.0+ --> */}
-<div className="relative bg-gray-50 pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
+<div className="relative  pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
   <div className="absolute inset-0">
     <div className="bg-white h-1/3 sm:h-2/3"></div>
   </div>
@@ -248,108 +248,55 @@ eQToss follows the guidance of Web Content Accessibility Guidelines 2.1 (WCAG 2.
     </div>
     <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
     
-      <div data-aos="fade-right"  className="flex flex-col rounded-lg shadow-lg overflow-hidden">
+      <div data-aos="fade-right"  className="flex flex-col rounded-lg  overflow-hidden">
         <div className="flex-shrink-0">
-          <img className="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80" alt=""/>
+        <Image className="w-full rounded-lg" width={200} height={100} objectFit="contain" layout="responsive"  quality={75}   src="/images/home4.png" alt=""/>
         </div>
         <div className="flex-1 bg-white p-6 flex flex-col justify-between">
           <div className="flex-1">
             <p className="text-sm font-medium text-indigo-600">
-              <a href="#" className="hover:underline"> Article </a>
+              <a href="#" className="hover:underline"> Infos </a>
             </p>
             <a href="#" className="block mt-2">
               <p className="text-xl font-semibold text-gray-900">Every Deal is Sourced and Shared by Real People</p>
               <p className="mt-3 text-base text-gray-500">Everyone loves to discover a deal that (almost) no one else knows about. Finding an 80% discount or scoring a luxury trip for a rock bottom price is thrilling. With the community’s votes and commentary you’ll have more confidence in your purchase. That’s winning.</p>
             </a>
           </div>
-          <div className="mt-6 flex items-center">
-            <div className="flex-shrink-0">
-              <a href="#">
-                <span className="sr-only">Roel Aufderehar</span>
-                <img className="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""/>
-              </a>
-            </div>
-            <div className="ml-3">
-              <p className="text-sm font-medium text-gray-900">
-                <a href="#" className="hover:underline"> Roel Aufderehar </a>
-              </p>
-              <div className="flex space-x-1 text-sm text-gray-500">
-                <time dateTime="2020-03-16"> Mar 16, 2020 </time>
-                <span aria-hidden="true"> &middot; </span>
-                <span> 6 min read </span>
-              </div>
-            </div>
-          </div>
+        
         </div>
       </div>
-      
-      <div data-aos="zoom-in" className="flex flex-col rounded-lg shadow-lg overflow-hidden">
+      {/* <<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>></> */}
+      <div data-aos="zoom-in" className="flex flex-col rounded-lg  overflow-hidden">
         <div className="flex-shrink-0">
-          <img className="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1547586696-ea22b4d4235d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80" alt=""/>
-        </div>
+        <Image className="w-full rounded-lg" width={200} height={100} objectFit="contain" layout="responsive"  quality={75}   src="/images/home5.png" alt=""/>        </div>
         <div className="flex-1 bg-white p-6 flex flex-col justify-between">
           <div className="flex-1">
             <p className="text-sm font-medium text-indigo-600">
-              <a href="#" className="hover:underline"> Video </a>
+              <a href="#" className="hover:underline"> Infos </a>
             </p>
             <a href="#" className="block mt-2">
               <p className="text-xl font-semibold text-gray-900">Find the Best Products For the Best Prices</p>
               <p className="mt-3 text-base text-gray-500">Our one of a kind online community and team of skilled editors are obsessed with uncovering great products and every layer of savings. Users share, confirm, and comment on deals so that everyone benefits.</p>
             </a>
           </div>
-          <div className="mt-6 flex items-center">
-            <div className="flex-shrink-0">
-              <a href="#">
-                <span className="sr-only">Brenna Goyette</span>
-                <img className="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""/>
-              </a>
-            </div>
-            <div className="ml-3">
-              <p className="text-sm font-medium text-gray-900">
-                <a href="#" className="hover:underline"> Brenna Goyette </a>
-              </p>
-              <div className="flex space-x-1 text-sm text-gray-500">
-                <time dateTime="2020-03-10"> Mar 10, 2020 </time>
-                <span aria-hidden="true"> &middot; </span>
-                <span> 4 min read </span>
-              </div>
-            </div>
-          </div>
+          
         </div>
       </div>
-      
-      <div data-aos="fade-right" className="flex flex-col rounded-lg shadow-lg overflow-hidden">
+      {/* <<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>></> */}
+      <div data-aos="fade-right" className="flex flex-col rounded-lg  overflow-hidden">
         <div className="flex-shrink-0">
-          <img className="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80" alt=""/>
-        </div>
+        <Image className="w-full rounded-lg" width={200} height={100} objectFit="contain" layout="responsive"  quality={75}   src="/images/home2.png" alt=""/>        </div>
         <div className="flex-1 bg-white p-6 flex flex-col justify-between">
           <div className="flex-1">
             <p className="text-sm font-medium text-indigo-600">
-              <a href="#" className="hover:underline"> Case Study </a>
+              <a href="#" className="hover:underline"> Infos </a>
             </p>
             <a href="#" className="block mt-2">
               <p className="text-xl font-semibold text-gray-900">Become a Better Shopper Every Time You Search</p>
               <p className="mt-3 text-base text-gray-500">Whether you’re window shopping or looking for something specific, you’ll gather intel on the things you need and discover new product you’ll love. Along the way, you’ll receive invaluable wisdom on how to shop smarter and save more.</p>
             </a>
           </div>
-          <div className="mt-6 flex items-center">
-            <div className="flex-shrink-0">
-              <a href="#">
-                <span className="sr-only">Daniela Metz</span>
-                <img className="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""/>
-              </a>
-            </div>
-            <div className="ml-3">
-              <p className="text-sm font-medium text-gray-900">
-                <a href="#" className="hover:underline"> Daniela Metz </a>
-              </p>
-              <div className="flex space-x-1 text-sm text-gray-500">
-                <time dateTime="2020-02-12"> Feb 12, 2020 </time>
-                <span aria-hidden="true"> &middot; </span>
-                <span> 11 min read </span>
-              </div>
-            </div>
-          </div>
+         
         </div>
       </div>
     </div>

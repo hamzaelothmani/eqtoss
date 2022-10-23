@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import axios from 'axios'
+import { v4 as uuidv4 } from "uuid";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
@@ -63,6 +65,27 @@ export default function Header() {
   const { data: session, status } = useSession();
   console.log(session?.user.image);
 
+
+
+
+  useEffect( ()  =>{
+    if(session){
+   
+        
+         axios.post("/api/server/saveProduct", {
+        name : session.user.name,
+        email: session.user.email,
+        id: uuidv4()
+        
+         })
+         .then(function (response) {
+           console.log(response);
+         })
+         .catch(function (error) {
+           console.log(error.response.data.error.keyValue.email, "ffffff");
+         });
+     }  
+  }, [session])
   return (
     <>
       <nav className="bg-white shadow  z-50 sticky top-0">

@@ -351,6 +351,7 @@ const PostForm = () => {
               </button></Link>
 
             <Link href='/ShoppingList' ><button
+            
                 disabled={ allowed === false && areImagesLoaded === false }
                 onClick={() => sendData()}
                 type="submit"

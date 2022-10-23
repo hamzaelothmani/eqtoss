@@ -3,11 +3,7 @@ import axios from "axios";
 import Cards from "./Cards";
 import { useSession } from "next-auth/react";
 import { BsArrowDownCircleFill, BsFillArrowUpCircleFill } from "react-icons/bs";
-// const data = [
-//     { img: "pet.png", name: "express", desc: "pet", price: 999, id:2, category: 'Men'  },
-//     { img: "resto.png", name: "mongoose", desc: "retsto", price: 888, id:1, category: 'Women' },
-//     { img: "tech.png", name: "middleware", desc: "tech", price: 222, id:3, category: 'Children' },
-//   ]
+
 
 const ShoppingList = () => {
   // const [product, setProduct] = useState(data);
@@ -23,7 +19,7 @@ const ShoppingList = () => {
   // console.log(patch, "zzzzzzzzzzzz");
   // console.log(page, "pageeeeeeee");
   // console.log(formData, "hahahahahahaha");
-  console.log(session?.user.email, "hamza hamza");
+  // console.log(session?.user.email, "hamza hamza");
 
   const handlePrevious = () => {
     setPage((p) => {
@@ -63,7 +59,7 @@ const ShoppingList = () => {
           )
           .then(function (response) {
             setFormData(response.data.data);
-            // console.log(response);
+            console.log(response.pagination.pageCount, 'hawhawhaw');
           })
           .catch(function (error) {
             console.log(error);
@@ -85,6 +81,26 @@ const ShoppingList = () => {
 
       await axios
         .patch(
+          `/api/${session?.user.email}`,
+          { id },
+          {
+            headers: { "Content-type": "application/json; charset=UTF-8" },
+          }
+        )
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error, "ffffff");
+        });
+    }
+  };
+  const deleteData = async (id) => {
+  
+    if(session){
+
+      await axios
+        .put(
           `/api/${session?.user.email}`,
           { id },
           {
@@ -171,6 +187,7 @@ const ShoppingList = () => {
           id={elements._id}
           key={index}
           patchData={patchData}
+          deleteData={deleteData}
         />
       ))}
    

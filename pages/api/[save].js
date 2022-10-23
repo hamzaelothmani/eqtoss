@@ -52,24 +52,18 @@ export default async (req, res) => {
     //   break;
     case "PUT":
       try {
-        const { name, description } = req.body;
-        if (!name && !description) return "inavalid data";
-        const note = await SaveProduct.findByIdAndUpdate(
-          id,
-          { name, description },
-          {
-            new: true,
-            runValidators: true,
-          }
-        );
-
+        const note = await SaveProduct.findOneAndUpdate({email: save}, { $pull:{
+          savePro: req.body.id
+        } }, {
+          new: true,
+        });
+        
         if (!note) {
           return res.status(400).json({ success: false });
         }
-
         res.status(200).json({ success: true, data: note });
       } catch (error) {
-        res.status(400).json({ success: false });
+        res.status(400).json({ success: false, data: "dd" });
       }
       break;
     case "DELETE":
@@ -91,44 +85,3 @@ export default async (req, res) => {
   }
 };
 
-// dbConnect();
-
-// export default async function handler(req, res) {
-//   const { method } = req;
-//   const { PosterID } = req.query;
-//   switch (method) {
-//     case 'GET':
-//       try {
-//           const note = await Poster.findById(id);
-
-//           if (!note) {
-//               return res.status(400).json({ success: false });
-//           }
-
-//           res.status(200).json({ success: true, data: note });
-//       } catch (error) {
-//           res.status(400).json({ success: false });
-//       }
-//     case "PUT":
-//       try {
-//         const { name, description } = req.body;
-//         if (!name && !description) return "inavalid data";
-//         await Poster.updateOne({ _id: PosterID }, { name, description });
-//         res.status(200).json({ success: true });
-//       } catch (error) {
-//         console.log(error);
-//         res.status(500).json({ success: false, error });
-//       }
-//       break;
-
-//     case "DELETE":
-//       try {
-//         await Poster.deleteOne({ _id: PosterID });
-//         res.status(200).json({ success: true });
-//       } catch (error) {
-//         console.log(error);
-//         res.status(500).json({ success: false, error });
-//       }
-//       break;
-//   }
-// }

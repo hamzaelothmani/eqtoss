@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { FaRegCommentDots } from "react-icons/fa";
 import { AiFillLike } from "react-icons/ai";
 import { MdOutlineBookmarkAdd } from "react-icons/md";
-const Cards = ({ elements, id, patchData, patch }) => {
+const Cards = ({ elements, id, patchData, patch, deleteData }) => {
   console.log(id, 'false alarm');
   console.log(patch, 'zzzzzzzzzzzzzz');
   
@@ -42,7 +42,7 @@ const Cards = ({ elements, id, patchData, patch }) => {
                     on 10/20/2022
                   </p>
                   <div className="flex text-sm font-medium">
-                 <button><MdOutlineBookmarkAdd className="w-6 h-6" /></button> 
+                 <button onClick={()=> deleteData(elements._id)}><MdOutlineBookmarkAdd className="w-6 h-6" /></button> 
                   </div>
                 </div>
               </div>

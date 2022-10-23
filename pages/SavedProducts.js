@@ -16,7 +16,7 @@ useEffect(  () => {
     );
       
 
-setSavedDt(response.data.data)
+setSavedDt(response.data.data.savePro)
        
       })
       .catch(function(error) {
@@ -49,14 +49,14 @@ setSavedDt(response.data.data)
 
   return (
     <>
-    {
+    {/* {
       savedDt.map((ele, index)=> (
         <div key={index}>
 <h1> {ele.savePro} </h1>
         </div>
 
       ))
-    }
+    } */}
     <div className="bg-gray-50">
 
 
