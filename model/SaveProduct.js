@@ -20,7 +20,8 @@ const userSchema = new Schema({
     // minlength: 5,
   },
   savePro: {
-    type : Array , "default" : []
+    type : [String]
+    // type : Array , "default" : []
   },
 });
 

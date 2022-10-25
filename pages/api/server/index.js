@@ -43,5 +43,3 @@ if(!images && !title && !description && !price && !url && !category && !prePrice
   }
 }
 
-
-

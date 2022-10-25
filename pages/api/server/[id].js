@@ -20,7 +20,7 @@ export default async (req, res) => {
 
         res.status(200).json({ success: true, data: note });
       } catch (error) {
-        res.status(400).json({ success: false });
+        res.status(400).json({ success: false }, 'gggggggggg');
       }
       break;
     case "PATCH":

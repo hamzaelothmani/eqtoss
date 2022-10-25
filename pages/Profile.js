@@ -19,7 +19,7 @@ const Profile = () => {
 
                 const result = response.data.data.filter((element=>element.userEmail==session?.user.email))
                 console.log(result,"filtered products");
-                // setProfile(result)
+                setProfile(result)
               })
               .catch(function(error) {
                   console.log((error))
@@ -28,19 +28,16 @@ const Profile = () => {
     
     }, [session])
 
-    // console.log(profile, 'hhhhhhhhhhhhhhhh');
+    console.log(profile, 'hhhhhhhhhhhhhhhh');
 
   return (
     <>
-   {/* {profile.map(()=> ( */}
-
-<div className="bg-white">
+    <div className="bg-white">
   <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:pb-24 lg:px-8">
     <div className="max-w-xl">
       <h1 className="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">Product history</h1>
       <p className="mt-2 text-sm text-gray-500">Here Are Your Posting History</p>
     </div>
-
     <div className="mt-16">
       <h2 className="sr-only">Recent orders</h2>
 
@@ -62,18 +59,21 @@ const Profile = () => {
                 <th scope="col" className="w-0 py-3 font-normal text-right">Info</th>
               </tr>
             </thead>
+   {
+    profile.map((ele, ind)=>(
+
             <tbody className="border-b border-gray-200 divide-y divide-gray-200 text-sm sm:border-t">
               <tr>
                 <td className="py-6 pr-8">
                   <div className="flex items-center">
-                    <img src="https://tailwindui.com/img/ecommerce-images/order-history-page-02-product-01.jpg" alt="Detail of mechanical pencil tip with machined black steel shaft and chrome lead tip." className="w-16 h-16 object-center object-cover rounded mr-6"/>
+                    <img src={ele.images[0]} className="w-16 h-16 object-center object-cover rounded mr-6"/>
                     <div>
-                      <div className="font-medium text-gray-900">Machined Pen and Pencil Set</div>
+                      <div className="font-medium text-gray-900">{ele.title} </div>
                       <div className="mt-1 sm:hidden"></div>
                     </div>
                   </div>
                 </td>
-                <td className="hidden py-6 pr-8 sm:table-cell">$70.00</td>
+                <td className="hidden py-6 pr-8 sm:table-cell">${ele.price} </td>
                 <td className="hidden py-6 pr-8 sm:table-cell">Delivered Jan 25, 2021</td>
                 <td className="py-6 font-medium text-right whitespace-nowrap">
                   <a href="#" className="text-indigo-600">View<span className="hidden lg:inline"> Product</span><span className="sr-only">, Machined Pen and Pencil Set</span></a>
@@ -82,14 +82,20 @@ const Profile = () => {
 
               {/* <!-- More products... --> */}
             </tbody>
-          </table>
-        </div>
+    ))
+  }
+  </table>
+</div>
 
-        {/* <!-- More orders... --> */}
-      </div>
-    </div>
+{/* <!-- More orders... --> */}
+</div>
+</div>
   </div>
 </div>
+
+
+
+    
    {/* ))} */}
     </>
   )
