@@ -52,25 +52,25 @@ console.log(savedDt, 'mongooooooooose');
 
         // console.log(savedDt, 'saved dddd');
   if(savedDt){
-    let users = [];
-    let promises = [];
-    for (let i = 0; i< savedDt.length; i++) {
-      promises.push(
-        axios.get(`/api/server/${savedDt[i]}` ).then(response => {
-          // do something with response
-          console.log(response, "response");
-          users.push(response);
-        })
-      )
-    }
-    
-    Promise.all(promises).then(() => setAppear(users) );
+  }
+  let users = [];
+  let promises = [];
+  for (let i = 0; i< savedDt.length; i++) {
+    promises.push(
+      axios.get(`/api/server/${savedDt[i]}` ).then(response => {
+        // do something with response
+        console.log(response, "response");
+        users.push(response);
+      })
+    )
+  }
   
-     console.log(promises, "promises");
-     console.log(users, "users");
+  Promise.all(promises).then(() => setAppear(users) );
+
+   console.log(promises, "promises");
+   console.log(users, "users");
   
-      }
-      
+  
     }, [savedDt])
   // const sendiix=()=>{
 

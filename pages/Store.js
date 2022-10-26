@@ -1,26 +1,31 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 
 const Store = () => {
   const [name, setName] = useState('')
 const [email, setEmail] = useState(["medelothmani481@gmail.com", "hamzasimiller@gmail.com", "medamal2002@gmail.com"])
 const [message, setMessage] = useState('')
+const [change, setchange] = useState(false)
 
-const sendData = async ()=>{
-console.log('sending'); 
+const  fee= async ()=>{
   for(let mail of email){
 
- await axios.post('/api/contact', {
-    mail
-    })
-    .then(function (response) {
-      console.log(response, 'done');
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+       await axios.post('/api/contact', {
+        mail, name
+        })
+        .then(function (response) {
+          console.log(response, 'done');
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      }
 }
-}
+
+  
+
+
+
 
 
   return (
@@ -30,7 +35,7 @@ console.log('sending');
   <input onChange={(e)=>setEmail(e.target.value)} type="text" placeholder='email...' autoFocus/>
   <textarea onChange={(e)=>setMessage(e.target.value)} type="text" placeholder='text..' autoFocus/>
 
-  <button onClick={()=> sendData()} >submit</button>
+  <button onClick={()=> fee()} >submit</button>
 </div>
     </>
   )
