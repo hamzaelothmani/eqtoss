@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import Image from 'next/image'
+import { v4 as uuidv4 } from "uuid";
 import axios from 'axios'
 import { useSession } from "next-auth/react";
 
@@ -43,7 +44,7 @@ const Profile = () => {
 
       <div className="space-y-20">
         <div>
-          <h3 className="sr-only">Order placed on <time datetime="2021-01-22">January 22, 2021</time></h3>
+          <h3 className="sr-only">Order placed on <time dateTime="2021-01-22">January 22, 2021</time></h3>
 
       
 
@@ -62,7 +63,7 @@ const Profile = () => {
    {
     profile.map((ele, ind)=>(
 
-            <tbody className="border-b border-gray-200 divide-y divide-gray-200 text-sm sm:border-t">
+            <tbody key={uuidv4()} className="border-b border-gray-200 divide-y divide-gray-200 text-sm sm:border-t">
               <tr>
                 <td className="py-6 pr-8">
                   <div className="flex items-center">

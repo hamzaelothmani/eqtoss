@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import { useSession } from "next-auth/react";
+import { v4 as uuidv4 } from "uuid";
 
 const SavedProducts = () => {
   const { data: session, status } = useSession();
@@ -105,15 +106,15 @@ console.log(savedDt, 'mongooooooooose');
     </div>
   </div>
     
-{appear.map((item, index)=>( 
+{appear.map((item)=>( 
      
 
-  <section aria-labelledby="recent-heading" className="mt-16">
+  <section key={uuidv4()} aria-labelledby="recent-heading" className="mt-16">
     <h2 id="recent-heading" className="sr-only">Recent orders</h2>
     <div className="max-w-7xl mx-auto sm:px-2 lg:px-8">
       <div className="max-w-2xl mx-auto space-y-8 sm:px-4 lg:max-w-4xl lg:px-0">
         <div className="bg-white border-t border-b border-gray-200 shadow-sm sm:rounded-lg sm:border">
-          <h3 className="sr-only">Order placed on <time datetime="2021-07-06">Jul 6, 2021</time></h3>
+          <h3 className="sr-only">Order placed on <time dateTime="2021-07-06">Jul 6, 2021</time></h3>
 
 
 
@@ -138,9 +139,9 @@ console.log(savedDt, 'mongooooooooose');
                 <div className="flex items-center">
                   {/* <!-- Heroicon name: solid/check-circle --> */}
                   <svg className="w-5 h-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <p className="ml-2 text-sm font-medium text-gray-500">Delivered on <time datetime="2021-07-12">July 12, 2021</time></p>
+                  <p className="ml-2 text-sm font-medium text-gray-500">Delivered on <time dateTime="2021-07-12">July 12, 2021</time></p>
                 </div>
 
                 <div className="mt-6 border-t border-gray-200 pt-4 flex items-center space-x-4 divide-x divide-gray-200 text-sm font-medium sm:mt-0 sm:ml-4 sm:border-none sm:pt-0">
