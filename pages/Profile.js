@@ -29,6 +29,23 @@ const Profile = () => {
     
     }, [session])
 
+console.log(profile.map(ele=> ele._id), 'heeeeeeee');
+const deleteShit=  (_id)=>{
+
+
+
+  if(profile){
+
+
+    axios.delete(`/api/server/${_id}`)
+      .then(response => console.log(response))
+      .catch(error => {
+          
+          console.error('There was an error!', error);
+      });
+  }
+}
+
     console.log(profile, 'hhhhhhhhhhhhhhhh');
 
   return (
@@ -75,9 +92,9 @@ const Profile = () => {
                   </div>
                 </td>
                 <td className="hidden py-6 pr-8 sm:table-cell">${ele.price} </td>
-                <td className="hidden py-6 pr-8 sm:table-cell">Delivered Jan 25, 2021</td>
+                <td className="hidden py-6 pr-8 sm:table-cell">Delivered {ele.timix}</td>
                 <td className="py-6 font-medium text-right whitespace-nowrap">
-                  <a href="#" className="text-indigo-600">View<span className="hidden lg:inline"> Product</span><span className="sr-only">, Machined Pen and Pencil Set</span></a>
+                  <button onClick={()=> deleteShit(ele._id)} className="text-indigo-600">Delete<span className="hidden lg:inline"> Product</span><span className="sr-only">, Machined Pen and Pencil Set</span></button>
                 </td>
               </tr>
 

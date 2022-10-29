@@ -1,16 +1,18 @@
 import React from 'react'
 
 
-const Com = ({id, text, date, state, ele, name}) => {
+const Com = ({ele}) => {
+  console.log(ele, 'eerererer');
   return (
     <>
-<div key={id} className="flex  xl:mx-52 text-sm text-gray-500 space-x-4 sm:mx-10">
+  
+<div  className="flex  xl:mx-52 text-sm text-gray-500 space-x-4 sm:mx-10">
               <div className="flex-none py-10">
                 <img src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80" alt="" className="w-10 h-10 bg-gray-100 rounded-full"/>
               </div>
               <div className="py-10 border-b w-full border-gray-200">
-                <h3 className="font-medium text-gray-900"> {name} </h3>
-                <p><time dateTime="2021-07-16"> {date} </time></p>
+                <h3 className="font-medium text-gray-900"> hamza </h3>
+                <p><time dateTime="2021-07-16"> {new Date().toLocaleString().split(',')[0]} </time></p>
 
                 <div className="flex items-center mt-4">
                   {/* <!--
@@ -44,9 +46,13 @@ const Com = ({id, text, date, state, ele, name}) => {
                 </div>
                 <p className="sr-only">5 out of 5 stars</p>
 
-                <div className="mt-4 prose prose-sm max-w-none text-gray-500">
-                  <p> {text} </p>
+              
+                  <div className="mt-4 prose prose-sm max-w-none text-gray-500">
+                  <p> {ele} </p>
                 </div>
+                
+                  
+              
               </div>
             </div>
 

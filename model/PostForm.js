@@ -32,11 +32,23 @@ userEmail: {
   type: String,
   required: true,
 },
+userName: {
+  type: String,
+  required: true,
+},
+timix: {
+  type: String,
+  required: true,
+},
 savix :{
   type: Boolean,
    default: false
 },
-  images:{ type : Array , "default" : [] }
+  images:{ type : Array , "default" : [] },
+  commt: {
+    type : [String]
+    // type : Array , "default" : []
+  },
 },
 
 {

@@ -28,10 +28,10 @@ export default async function handler(req, res) {
 
     case "POST":
       try {
-        const { images, title,  description, price, url, category, prePrice, userEmail } = req.body;
-if(!images && !title && !description && !price && !url && !category && !prePrice && !userEmail  ) return 'invalid Data'
+        const { images, title,  description, price, url, category, prePrice, userEmail, userName, timix, commt } = req.body;
+if(!images && !title && !description && !price && !url && !category && !prePrice && !userEmail && !timix && !userName && !commt ) return 'invalid Data'
         
-        const client = await Poster.create({ images, title,  description, price, url, category, prePrice, userEmail });
+        const client = await Poster.create({ images, title,  description, price, url, category, prePrice, userEmail, userName, timix, commt  });
 
         res.status(201).json({success:true, data:client});
       } catch (error) {

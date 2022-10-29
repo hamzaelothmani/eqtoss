@@ -18,7 +18,8 @@ const Infos = () => {
     const router = useRouter();
     const elements = router.query;
     
-    const { price, prePrice, title, description, images } = elements;
+    const { price, prePrice, title, description, images, commt } = elements;
+    console.log(commt, 'comments')
     console.log(elements,"hgjgbgbgbhgb")
 useEffect(()=>{
 
@@ -238,7 +239,7 @@ else{
 
 
 <div id="comment">
-  <Test />
+  <Test elements={elements} />
 </div>
     </>
   );

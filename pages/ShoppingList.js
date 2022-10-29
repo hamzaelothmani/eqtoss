@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Cards from "./Cards";
+import Router from 'next/router';
 import { useSession } from "next-auth/react";
 import { BsArrowDownCircleFill, BsFillArrowUpCircleFill } from "react-icons/bs";
 
 
-const ShoppingList = () => {
+const ShoppingList = ({boolix}) => {
+  
+  
   // const [product, setProduct] = useState(data);
   const { data: session, status } = useSession();
   const [input, setInput] = useState("");
@@ -40,16 +43,15 @@ const ShoppingList = () => {
   };
 
   // useEffect(()=>{
-  //   axios
-  //     .get("/api/server")
-  //     .then(function(response) {
-  //       setFormData(response.data.data)
-  //         console.log(response)
-  //     })
-  //     .catch(function(error) {
-  //         console.log((error))
+  //   Router.onRouteChangeComplete = () => {
+  //     window.scroll({
+  //       top: 0,
+  //       left: 0,
   //     });
-  // }, [])
+  //   };
+  // }, [page, pageCount])
+
+
   useEffect(() => {
     (async () => {
       if (!input) {
@@ -72,8 +74,13 @@ const ShoppingList = () => {
         });
         setFormData(data);
       }
+     
     })();
   }, [input, page, filterr, sortt, orderBy]);
+
+
+console.log(formData.map(ele=> ele.commt), 'comments');
+      
 
   const patchData = async (id) => {
     console.log("patchiiiiix");
@@ -94,6 +101,23 @@ const ShoppingList = () => {
           console.log(error, "ffffff");
         });
     }
+// if(formData){
+//   axios
+//   .patch(
+//     `/api/add/${session?.user.email}`,
+//     { savix: true },
+//     {
+//       headers: { "Content-type": "application/json" },
+//     }
+//   )
+//   .then(function (response) {
+//     console.log(response);
+//   })
+//   .catch(function (error) {
+//     console.log(error, "ffffff");
+//   });
+// }
+    
   };
   const deleteData = async (id) => {
   
@@ -104,7 +128,7 @@ const ShoppingList = () => {
           `/api/${session?.user.email}`,
           { id },
           {
-            headers: { "Content-type": "application/json; charset=UTF-8" },
+            headers: { "Content-type": "application/json" },
           }
         )
         .then(function (response) {
@@ -114,10 +138,26 @@ const ShoppingList = () => {
           console.log(error, "ffffff");
         });
     }
+    // if(formData){
+    //   axios
+    //   .patch(
+    //     `/api/add/${session?.user.email}`,
+    //     { savix: false },
+    //     {
+    //       headers: { "Content-type": "application/json" },
+    //     }
+    //   )
+    //   .then(function (response) {
+    //     console.log(response);
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error, "ffffff");
+    //   });
+    // }
   };
   return (
     <>
-      <div className="w-full mt-4 md:w-2/3 shadow m-auto p-5 rounded-lg bg-white">
+      <div id="carts" className="w-full mt-4 md:w-2/3 shadow m-auto p-5 rounded-lg bg-white">
         <div className="relative">
           <div className="absolute flex items-center ml-2 h-full">
             <svg
@@ -188,6 +228,8 @@ const ShoppingList = () => {
           key={index}
           patchData={patchData}
           deleteData={deleteData}
+          boolix={boolix}
+          session={session}
         />
       ))}
    
@@ -273,3 +315,9 @@ const ShoppingList = () => {
 };
 
 export default ShoppingList;
+
+export const getServerSideProps = async (context) => {
+  const res = await fetch('http://localhost:3000/api/server/saveProduct')
+  const boolix = await res.json()
+  return {props: {boolix}}
+}

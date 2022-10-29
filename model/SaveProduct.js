@@ -19,6 +19,10 @@ const userSchema = new Schema({
     unique: true,
     // minlength: 5,
   },
+  boolix :{
+    type: Boolean,
+     default: false
+  },
   savePro: {
     type : [String]
     // type : Array , "default" : []

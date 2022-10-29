@@ -20,10 +20,10 @@ export default async function handler(req, res) {
 
     case "POST":
       try {
-        const { email, name, id, save} = req.body;
-if(!email && !name&& !id && !save  ) return 'invalid Data'
+        const { email, name, id, savePro} = req.body;
+if(!email && !name&& !id  ) return 'invalid Data'
         
-        const client = await SaveProduct.create({email, name, id, save});
+        const client = await SaveProduct.create({email, name, id, savePro});
 
         res.status(201).json({success:true, data:client});
       } catch (error) {

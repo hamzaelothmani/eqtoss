@@ -3,75 +3,76 @@ import axios from 'axios'
 import { useSession } from "next-auth/react";
 import { v4 as uuidv4 } from "uuid";
 
-const SavedProducts = () => {
+
+
+
+
+const SavedProducts = ({people}) => {
+  console.log(people.data.map(ele=> ele.savePro[0]), "helloooooooooooo");
   const { data: session, status } = useSession();
 const [savedDt, setSavedDt] = useState()
 const [appear, setAppear] = useState([])
 
 
 
-useEffect(  () => {
+// useEffect(  () => {
+// console.log(people.data, "zzzzzzzz");
+//   if(session){
 
-  if(session){
-      axios.get(`/api/server/saveProduct`)
+//          console.log(session);
  
-       .then(function(response) {
-         console.log(session);
- 
-         const filerDatix = response.data.data.filter((ele=>ele.email == session?.user.email))
- 
-         const result = filerDatix.map((item)=> Array.from(item.savePro))
+//          const filerDatix = people.data.filter((ele=>ele.email == session?.user.email))
+//  console.log(filerDatix, "datiiiiiiiiiiiiix");
+//          const result = filerDatix.map((item)=> item.savePro)
     
        
- setSavedDt(...result)
- console.log(...result,"filtered products");
-     //     const result = response.data.data.map((ele)=> ele.savePro)
-     //  console.log(result, "heeeeeeeeeeeeeeeeeeee"
-     // );
-       
-       })
-       .catch(function(error) {
-           console.log((error))
-       });
- 
- 
-       
-         
-      
-           
-       
-     } 
+//  setSavedDt(...result)
+
+//      } 
 
 
       
   
-}, [session])
-console.log(savedDt, 'mongooooooooose');
-// console.log(savedDt, 'gg');
+// }, [session])
+// console.log(savedDt, 'mongoooooooooseeeeeeeeeeeeeeee');
+// // console.log(savedDt, 'gg');
     useEffect(()=>{
+      
+      if(session){
 
+        console.log(session);
+
+        const filerDatix = people.data.filter((ele=>ele.email == session?.user.email))
+
+        const result = filerDatix.map((item)=> item.savePro)
+   
+      
+setSavedDt(...result)
+console.log("111111111111111111");
+    } 
+    console.log("22222222222222");
         // console.log(savedDt, 'saved dddd');
   if(savedDt){
+    let users = [];
+    let promises = [];
+    for (let i = 0; i< savedDt?.length; i++) {
+      promises.push(
+        axios.get(`/api/server/${savedDt[i]}` ).then(response => {
+          // do something with response
+          console.log(response, "response");
+          users.push(response);
+        })
+      )
+    }
+    
+    Promise.all(promises).then(() => setAppear(users) );
+  
+     console.log(promises, "promises");
+     console.log(users, "users");
+   
   }
-  let users = [];
-  let promises = [];
-  for (let i = 0; i< savedDt.length; i++) {
-    promises.push(
-      axios.get(`/api/server/${savedDt[i]}` ).then(response => {
-        // do something with response
-        console.log(response, "response");
-        users.push(response);
-      })
-    )
-  }
   
-  Promise.all(promises).then(() => setAppear(users) );
-
-   console.log(promises, "promises");
-   console.log(users, "users");
-  
-  
-    }, [savedDt])
+    }, [savedDt, session])
   // const sendiix=()=>{
 
   //   let users = [];
@@ -141,7 +142,7 @@ console.log(savedDt, 'mongooooooooose');
                   <svg className="w-5 h-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <p className="ml-2 text-sm font-medium text-gray-500">Delivered on <time dateTime="2021-07-12">July 12, 2021</time></p>
+                  <p className="ml-2 text-sm font-medium text-gray-500">Delivered on {item.data.data.timix} <time dateTime="2021-07-12">by {item.data.data.userName}</time></p>
                 </div>
 
                 <div className="mt-6 border-t border-gray-200 pt-4 flex items-center space-x-4 divide-x divide-gray-200 text-sm font-medium sm:mt-0 sm:ml-4 sm:border-none sm:pt-0">
@@ -178,3 +179,9 @@ console.log(savedDt, 'mongooooooooose');
 }
 
 export default SavedProducts
+
+export const getServerSideProps = async (context) => {
+  const res = await fetch('http://localhost:3000/api/server/saveProduct')
+  const people = await res.json()
+  return {props: {people}}
+}

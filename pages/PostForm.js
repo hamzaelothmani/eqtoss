@@ -6,6 +6,7 @@ import { FcCheckmark } from "react-icons/fc";
 import axios from "axios";
 
 const PostForm = () => {
+  const { data: session, status } = useSession();
   const [images, setImages] = useState([]);
   const [title, setTitle] = useState(" ");
   const [description, setDescription] = useState(" ");
@@ -16,8 +17,13 @@ const PostForm = () => {
   const [areImagesLoaded, setareImagesLoaded] = useState(false);
   const [allowed, setAllowed] = useState(false);
   // const [save, setSave] = useState(false)
-  const { data: session, status } = useSession();
+
   const [userEmail, setUserEmail] = useState(session?.user.email)
+  const [userName, setUserName] = useState(session?.user.name)
+  const [timix, setTimix] = useState(new Date().toLocaleString().split(',')[0])
+  console.log(timix, "timix");
+  console.log(userName, "userName");
+  console.log(userEmail, "userEmail");
   console.log(allowed, 'allowed');
   console.log(areImagesLoaded, "areImageLoaded");
   // const [acceptedFiles, setacceptedFiles] = useState();
@@ -78,7 +84,8 @@ const PostForm = () => {
         images,
         prePrice,
         userEmail,
-        //  save
+       userName,
+       timix
       })
       .then(function (response) {
         console.log(response);
@@ -97,7 +104,8 @@ const PostForm = () => {
       category.length > 0 &&
       price.length > 0 &&
       prePrice.length > 0 &&
-      
+      // userName.length > 0 &&
+      timix.length > 0 &&
       images.length > 0 
     ){
       return setAllowed(true)
@@ -350,7 +358,7 @@ const PostForm = () => {
                 Cancel
               </button></Link>
 
-            <Link href='/ShoppingList' ><button
+           <button
             
                 disabled={ allowed === false && areImagesLoaded === false }
                 onClick={() => sendData()}
@@ -362,7 +370,7 @@ const PostForm = () => {
                 }  focus:outline-none focus:ring-2 focus:ring-offset-2 `}
               >
                 Save
-              </button></Link>
+              </button>
             </div>
           </div>
         </div>

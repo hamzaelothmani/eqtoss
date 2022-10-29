@@ -12,6 +12,7 @@ export default async (req, res) => {
   switch (method) {
     case "GET":
       try {
+        
         const note = await Poster.findById(id);
 
         if (!note) {
@@ -23,41 +24,38 @@ export default async (req, res) => {
         res.status(400).json({ success: false }, 'gggggggggg');
       }
       break;
-    case "PATCH":
-      try {
-        const note = await Poster.findByIdAndUpdate(id, req.body, {
-          new: true,
-        });
-        if (!note) {
-          return res.status(400).json({ success: false });
-        }
-        res.status(200).json({ success: true, data: note });
-      } catch (error) {
-        res.status(400).json({ success: false, data: "dd" });
-      }
-      break;
-    case "PUT":
-      try {
-        const { name, description } = req.body;
-        if (!name && !description) return "inavalid data";
-        const note = await Poster.findByIdAndUpdate(
-          id,
-          { name, description },
-          {
+      case "PATCH":
+        try {
+          const note = await Poster.findByIdAndUpdate( id, { $addToSet:{
+            commt: req.body.hamza
+          } }, {
             new: true,
-            runValidators: true,
+          });
+          
+          if (!note) {
+            return res.status(400).json({ success: false });
           }
-        );
-
-        if (!note) {
-          return res.status(400).json({ success: false });
+          res.status(200).json({ success: true, data: note });
+        } catch (error) {
+          res.status(400).json({ success: false, data: "dd" });
         }
-
-        res.status(200).json({ success: true, data: note });
-      } catch (error) {
-        res.status(400).json({ success: false });
-      }
-      break;
+        break;
+        case "PUT":
+          try {
+            const note = await Poster.findByIdAndUpdate( id, { $pull:{
+              commt: req.body.hamza
+            } }, {
+              new: true,
+            });
+            
+            if (!note) {
+              return res.status(400).json({ success: false });
+            }
+            res.status(200).json({ success: true, data: note });
+          } catch (error) {
+            res.status(400).json({ success: false, data: "dd" });
+          }
+          break;
     case "DELETE":
       try {
         const deletedNote = await Poster.deleteOne({ _id: id });
