@@ -7,8 +7,10 @@ import { FaRegCommentDots } from "react-icons/fa";
 import { AiFillLike } from "react-icons/ai";
 import { MdOutlineBookmarkAdd } from "react-icons/md";
 import { MdBookmarkAdd } from "react-icons/md";
-const Cards = ({ elements, id, patchData, patch, deleteData, boolix, session }) => {
+const Cards = ({ elements, id, patchData, patch, deleteData, putin, session }) => {
+console.log(putin.map((dee)=> dee.includes(elements._id) ), 'hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh');
   const [boole, setBoole] = useState()
+  console.log(elements, 'hamzaaaaaaaa');
   console.log(session?.user.email, 'dddddddddd');
 //   useEffect(()=>{
 //     const sett = boolix.data.filter((ham)=> session.user.email == ham.email )
@@ -81,7 +83,7 @@ console.log(boole, "qqqqqqqqqqq");
                         See More Infos
                       </a>
                     </Link>
-                    {boole ? (
+                    { putin.includes(elements._id)? (
                        <button
                         onClick={() => deleteData(elements._id)}
                         type="button"
@@ -127,4 +129,5 @@ console.log(boole, "qqqqqqqqqqq");
 };
 
 export default Cards;
+
 

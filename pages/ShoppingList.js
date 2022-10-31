@@ -6,9 +6,9 @@ import { useSession } from "next-auth/react";
 import { BsArrowDownCircleFill, BsFillArrowUpCircleFill } from "react-icons/bs";
 
 
-const ShoppingList = ({boolix}) => {
+const ShoppingList = ({result}) => {
   
-  
+
   // const [product, setProduct] = useState(data);
   const { data: session, status } = useSession();
   const [input, setInput] = useState("");
@@ -19,11 +19,21 @@ const ShoppingList = ({boolix}) => {
   const [filterr, setFilterr] = useState("All");
   const [orderBy, setOrderBy] = useState(1);
   const [patch, setPatch] = useState([]);
+  const [putin, setPutin] = useState()
+  console.log(putin, "putinnnnnnnnn");
   // console.log(patch, "zzzzzzzzzzzz");
   // console.log(page, "pageeeeeeee");
   // console.log(formData, "hahahahahahaha");
   // console.log(session?.user.email, "hamza hamza");
+  useEffect(()=>{
+    if(session){
 
+      const filerDatix = result.data.filter((ele=>ele.saveEmail == session?.user.email))
+      // console.log(filerDatix, "filtriiiiix");
+              const done = filerDatix.map((item)=> item.savePro)
+              setPutin(...done)
+    }
+  }, [result, session])
   const handlePrevious = () => {
     setPage((p) => {
       if (p === 0) return p;
@@ -42,14 +52,7 @@ const ShoppingList = ({boolix}) => {
     setProduct(resault);
   };
 
-  // useEffect(()=>{
-  //   Router.onRouteChangeComplete = () => {
-  //     window.scroll({
-  //       top: 0,
-  //       left: 0,
-  //     });
-  //   };
-  // }, [page, pageCount])
+
 
 
   useEffect(() => {
@@ -72,7 +75,7 @@ const ShoppingList = ({boolix}) => {
             title: input,
           },
         });
-        setFormData(data);
+        setFormData(...data);
       }
      
     })();
@@ -101,22 +104,7 @@ console.log(formData.map(ele=> ele.commt), 'comments');
           console.log(error, "ffffff");
         });
     }
-// if(formData){
-//   axios
-//   .patch(
-//     `/api/add/${session?.user.email}`,
-//     { savix: true },
-//     {
-//       headers: { "Content-type": "application/json" },
-//     }
-//   )
-//   .then(function (response) {
-//     console.log(response);
-//   })
-//   .catch(function (error) {
-//     console.log(error, "ffffff");
-//   });
-// }
+
     
   };
   const deleteData = async (id) => {
@@ -138,22 +126,7 @@ console.log(formData.map(ele=> ele.commt), 'comments');
           console.log(error, "ffffff");
         });
     }
-    // if(formData){
-    //   axios
-    //   .patch(
-    //     `/api/add/${session?.user.email}`,
-    //     { savix: false },
-    //     {
-    //       headers: { "Content-type": "application/json" },
-    //     }
-    //   )
-    //   .then(function (response) {
-    //     console.log(response);
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error, "ffffff");
-    //   });
-    // }
+    
   };
   return (
     <>
@@ -228,7 +201,8 @@ console.log(formData.map(ele=> ele.commt), 'comments');
           key={index}
           patchData={patchData}
           deleteData={deleteData}
-          boolix={boolix}
+          putin={putin}
+          // boolix={boolix}
           session={session}
         />
       ))}
@@ -318,6 +292,7 @@ export default ShoppingList;
 
 export const getServerSideProps = async (context) => {
   const res = await fetch('http://localhost:3000/api/server/saveProduct')
-  const boolix = await res.json()
-  return {props: {boolix}}
+  const result = await res.json()
+  
+  return {props: {result}}
 }
