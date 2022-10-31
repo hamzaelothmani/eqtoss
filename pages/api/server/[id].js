@@ -24,6 +24,26 @@ export default async (req, res) => {
         res.status(400).json({ success: false }, 'gggggggggg');
       }
       break;
+      // case "PATCH":
+      //   try {
+      //     const note = await Poster.findByIdAndUpdate( id, { $addToSet:{
+      //       commt: [{
+      //         gogo: req.body.gogo,
+      //         dodo: req.body.dodo,
+      //         soso: req.body.soso
+      //       }]
+      //     } }, {
+      //       new: true,
+      //     });
+          
+      //     if (!note) {
+      //       return res.status(400).json({ success: false });
+      //     }
+      //     res.status(200).json({ success: true, data: note });
+      //   } catch (error) {
+      //     res.status(400).json({ success: false, data: "dd" });
+      //   }
+      //   break;
       case "PATCH":
         try {
           const note = await Poster.findByIdAndUpdate( id, { $addToSet:{

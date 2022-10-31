@@ -63,7 +63,6 @@ export default function Header() {
   const router = useRouter();
 
   const { data: session, status } = useSession();
-  console.log(session?.user.image);
 
 
 
@@ -73,16 +72,17 @@ export default function Header() {
    
         
          axios.post("/api/server/saveProduct", {
-        name : session.user.name,
-        email: session.user.email,
-        id: uuidv4()
+           refe: uuidv4(),
+           saveEmail: session?.user.email,
+           saveName : session?.user.name,
+    
         
          })
          .then(function (response) {
            console.log(response);
          })
          .catch(function (error) {
-           console.log(error.response.data.error.keyValue.email, "ffffff");
+           console.log(error, "ffffff")
          });
      }  
   }, [session])

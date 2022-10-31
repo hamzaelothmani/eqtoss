@@ -3,46 +3,29 @@ import Com from "./Com";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 
-const Test = ({elements}) => {
-  // console.log(elements, 'this time i wont break your heart');
-  const [hamza, setHamza] = useState("");
-  // const [hamza, setHamza] = useState([]);
-  // console.log(value.date);
-  // const getValue = (e) => {
-  //   setInput(e.target.value);
-  // };
+const Test = () => {
+  const [input, setInput] = useState("");
+  const [value, setValue] = useState([]);
+  console.log(value.date);
+  const getValue = (e) => {
+    setInput(e.target.value);
+  };
 
-  // const addValue = () => {
-  //   if (input.length > 0) {
-    
-  //     setInput("");
-  //   }
-  // };
-
-  const patchData = async () => {
-    console.log("patchiiiiix");
-  if(hamza.length > 3){
-
-    await axios
-      .patch(
-        `/api/server/${elements._id}`,
-         {hamza} ,
+  const addValue = () => {
+    if (input.length > 0) {
+      setValue([
+        ...value,
         {
-          headers: { "Content-type": "application/json; charset=UTF-8" },
-        }
-      )
-      .then(function (response) {
-        console.log(response);
-        console.log(response.data.data, "ffffffff");
-      })
-      .catch(function (error) {
-        console.log(error, "eeeeeeee");
-      });
-      setHamza("")
-  }
-  
-    
-  }
+          name: "hamza",
+          text: input,
+          id: Math.random() * 1000,
+          state: false,
+          date: new Date().toLocaleString(),
+        },
+      ]);
+      setInput("");
+    }
+  };
   return (
     <>
       <div className="flex items-start space-x-4 xl:mx-52 sm:mx-10 ">
@@ -53,8 +36,8 @@ const Test = ({elements}) => {
                 Add your comment
               </label>
               <textarea
-                value={hamza}
-                onChange={(e)=> setHamza(e.target.value)}
+                  value={input}
+                  onChange={getValue}
                 rows="3"
                 name="comment"
                 id="comment"
@@ -72,7 +55,7 @@ const Test = ({elements}) => {
               </div>
               <div className="flex-shrink-0">
                 <button
-                  onClick={() => patchData()}
+                  onClick={() => addValue()}
                   type="submit"
                   className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
@@ -115,18 +98,14 @@ const Test = ({elements}) => {
         </form>
       </div> */}
 
-      {elements.commt.map((ele) => (
+{value.map((ele) => (
         <Com
-        
-ele={ele}
-
-
-
-          
-        
-          
-         
-          key={uuidv4()}
+        key={uuidv4()}
+        ele={ele}
+        name={ele.name}
+        date={ele.date}
+        state={ele.state}
+        text={ele.text}
         />
       ))}
     </>

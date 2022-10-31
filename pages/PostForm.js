@@ -213,7 +213,7 @@ const PostForm = () => {
                     className="max-w-lg shadow-sm block w-full xl:h-10 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"
                   />
                      <p className="mt-2 text-sm text-red-500">
-                  { price.length <= prePrice.length  &&  price < prePrice  ? <FcCheckmark />: "*Required"}
+                  { price.length <= prePrice.length  &&  parseInt(price) < parseInt(prePrice)  ? <FcCheckmark />: "*Required"}
                   </p>
                 </div>
               </div>

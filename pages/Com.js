@@ -1,12 +1,12 @@
 import React from 'react'
 
 
-const Com = ({ele}) => {
+const Com = ({id, text, date, state, ele, name}) => {
   console.log(ele, 'eerererer');
   return (
     <>
   
-<div  className="flex  xl:mx-52 text-sm text-gray-500 space-x-4 sm:mx-10">
+  <div key={id} className="flex  xl:mx-52 text-sm text-gray-500 space-x-4 sm:mx-10">
               <div className="flex-none py-10">
                 <img src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80" alt="" className="w-10 h-10 bg-gray-100 rounded-full"/>
               </div>
@@ -48,7 +48,7 @@ const Com = ({ele}) => {
 
               
                   <div className="mt-4 prose prose-sm max-w-none text-gray-500">
-                  <p> {ele} </p>
+                  <p> {text} </p>
                 </div>
                 
                   

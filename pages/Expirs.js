@@ -58,6 +58,7 @@ const deleteee = async () => {
     <div className='flex justify-around'>
 <button onClick={()=> patchData ()} >click</button>
 <button onClick={()=> deleteee ()} >delete</button>
+<h1></h1>
     </div>
     </>
   )
