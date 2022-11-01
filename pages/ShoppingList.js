@@ -15,9 +15,9 @@ const ShoppingList = ({result}) => {
   const [formData, setFormData] = useState([]);
   const [pageCount, setPageCount] = useState(5);
   const [page, setPage] = useState(0);
-  const [sortt, setSortt] = useState("Date");
+  const [sortt, setSortt] = useState("createdAt");
   const [filterr, setFilterr] = useState("All");
-  const [orderBy, setOrderBy] = useState(-1);
+  const [orderBy, setOrderBy] = useState(1);
   const [patch, setPatch] = useState([]);
   const [putin, setPutin] = useState()
 
@@ -176,21 +176,21 @@ const ShoppingList = ({result}) => {
               onChange={(e) => setSortt(e.target.value)}
               className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
             >
-              <option>Date</option>
-              <option>price</option>
+              <option value="createdAt" >Date</option>
+              <option value="price"  >price</option>
             </select>
             <select
               onChange={(e) => setOrderBy(e.target.value)}
               className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
             >
-              <option value={1}>lowest {sortt} </option>
-              <option value={-1}>highest {sortt} </option>
+              <option value={1}>  {sortt == "createdAt"? "Earliest Date": "Lowest Price"} </option>
+              <option value={-1}> {sortt == "createdAt"? "Latest Date": "Highest Price"} </option>
             </select>
           </div>
         </div>
       </div>
 
-      { formData.map((elements, index) => (
+      { formData?.map((elements, index) => (
         <Cards
           elements={elements}
           patch={patch}
