@@ -90,7 +90,7 @@ const ShoppingList = ({result}) => {
 
       await axios
         .patch(
-          `/api/${session?.user.email}`,
+          `/api/${session.user.email}`,
           { id },
           {
             headers: { "Content-type": "application/json; charset=UTF-8" },
@@ -112,7 +112,7 @@ const ShoppingList = ({result}) => {
 
       await axios
         .put(
-          `/api/${session?.user.email}`,
+          `/api/${session.user.email}`,
           { id },
           {
             headers: { "Content-type": "application/json" },
