@@ -20,20 +20,19 @@ const ShoppingList = ({result}) => {
   const [orderBy, setOrderBy] = useState(-1);
   const [patch, setPatch] = useState([]);
   const [putin, setPutin] = useState()
-  console.log(putin, "putinnnnnnnnn");
-  // console.log(patch, "zzzzzzzzzzzz");
-  // console.log(page, "pageeeeeeee");
-  // console.log(formData, "hahahahahahaha");
-  // console.log(session?.user.email, "hamza hamza");
+
+
   useEffect(()=>{
     if(session){
 
-      const filerDatix = result.data.filter((ele=>ele.saveEmail == session?.user.email))
-      // console.log(filerDatix, "filtriiiiix");
+      const filerDatix = result.data.filter((ele=>ele.saveEmail == session.user.email))
+
               const done = filerDatix.map((item)=> item.savePro)
               setPutin(...done)
     }
   }, [result, session])
+
+
   const handlePrevious = () => {
     setPage((p) => {
       if (p === 0) return p;
@@ -82,11 +81,11 @@ const ShoppingList = ({result}) => {
   }, [input, page, filterr, sortt, orderBy]);
 
 
-console.log(formData.map(ele=> ele.commt), 'comments');
+
       
 
   const patchData = async (id) => {
-    console.log("patchiiiiix");
+   
     if(session){
 
       await axios

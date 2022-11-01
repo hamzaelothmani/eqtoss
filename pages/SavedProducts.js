@@ -37,31 +37,31 @@ const [appear, setAppear] = useState([])
 // console.log(savedDt, 'mongoooooooooseeeeeeeeeeeeeeee');
 // // console.log(savedDt, 'gg');
     useEffect(()=>{
-      console.log('useeffect enter');
-      console.log(people.data, 'geeee');
+
+     
       if(session){
-        console.log(people.data, 'iiiiiiiiiinnnnnnnnn');
-console.log(session, 'inside session');
+       
+
 
         const filerDatix = people.data.filter((ele=>ele.saveEmail == session?.user.email))
 console.log(filerDatix, "filtriiiiix");
         const result = filerDatix.map((item)=> item.savePro)
    
-      console.log(result, 'dddddddddddd');
+    
 setSavedDt(...result)
-console.log(savedDt, "savedt enter");
+
     } 
    
         // console.log(savedDt, 'saved dddd');
   if(savedDt){
-    console.log(savedDt, 'hhhhhhhhhhh');
+
     let users = [];
     let promises = [];
     for (let i = 0; i< savedDt?.length; i++) {
       promises.push(
         axios.get(`/api/server/${savedDt[i]}` ).then(response => {
           // do something with response
-          console.log(response, "response");
+        
           users.push(response);
         })
       )
@@ -69,8 +69,7 @@ console.log(savedDt, "savedt enter");
     
     Promise.all(promises).then(() => setAppear(users) );
   
-     console.log(promises, "promises");
-     console.log(users, "users");
+   
    
   }
   
