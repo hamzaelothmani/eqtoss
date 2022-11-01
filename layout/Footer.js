@@ -1,10 +1,35 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useSession } from "next-auth/react";
+import axios from 'axios';
 
 
 
 const Footer = () => {
+  const { data: session, status } = useSession();
+
+  useEffect(()=>{
+
+    if(session){
+
+      axios.post('/api/contact', {
+      mail: session.user.email, 
+      name: session.user.name
+      })
+      .then(function (response) {
+        console.log(response, 'done');
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    }
+  
+    
+          
+    
+  }, [])
+
   return (
     <>
   <footer className="bg-white">

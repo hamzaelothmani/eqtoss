@@ -99,7 +99,7 @@ export default function (req, res) {
                                                                         <td align="center" width="100%" style="padding: 0 15px;text-align: justify;color: rgb(76, 76, 76);font-size: 12px;line-height: 18px;">
                                                                            <h3 style="font-weight: 600; padding: 0px; margin: 0px; font-size: 16px; line-height: 24px; text-align: center;" class="title-color">Hi ${name}</h3>
                                                                            <p style="margin: 20px 0 30px 0;font-size: 15px;text-align: center;">Welcome to eQToss <b>register now</b>!</p>
-                                                                           <div style="font-weight: 200; text-align: center; margin: 25px;"><a href=${`https://www.facebook.com/groups/710319892398278?multi_permalinks=5601230843307134&hoisted_section_header_type=recently_seen`} style="padding:0.6em 1em;border-radius:600px;color:#ffffff;font-size:14px;text-decoration:none;font-weight:bold" class="button-color">Join the conference</a></div>
+                                                                           <div style="font-weight: 200; text-align: center; margin: 25px;"><a href=${`https://eqtoss.vercel.app/Login?callbackUrl=https%3A%2F%2Feqtoss.vercel.app%2F&error=OAuthCallback#_=_`} style="padding:0.6em 1em;border-radius:600px;color:#ffffff;font-size:14px;text-decoration:none;font-weight:bold" class="button-color">Join the conference</a></div>
                                                                         </td>
                                                                      </tr>
                                                                   </tbody>

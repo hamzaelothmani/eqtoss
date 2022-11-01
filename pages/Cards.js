@@ -8,7 +8,7 @@ import { AiFillLike } from "react-icons/ai";
 import { MdOutlineBookmarkAdd } from "react-icons/md";
 import { MdBookmarkAdd } from "react-icons/md";
 const Cards = ({ elements, id, patchData, patch, deleteData, putin, session }) => {
-console.log(putin.map((dee)=> dee.includes(elements._id) ), 'hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh');
+
   const [boole, setBoole] = useState()
   console.log(elements, 'hamzaaaaaaaa');
   console.log(session?.user.email, 'dddddddddd');
@@ -58,7 +58,7 @@ console.log(boole, "qqqqqqqqqqq");
                       <h3 className="text-sm font-medium text-gray-900">
                         <a href="#">{elements?.title}</a>
                       </h3>
-                      <p className="text-sm text-gray-500 truncate">
+                      <p className="text-sm text-gray-500  break-all ">
                         {elements?.description}
                       </p>
                       <p className="mt-1 font-medium line-through opacity-50 text-gray-900">
@@ -83,7 +83,7 @@ console.log(boole, "qqqqqqqqqqq");
                         See More Infos
                       </a>
                     </Link>
-                    { putin.includes(elements._id)? (
+                    { putin?.includes(elements._id)? (
                        <button
                         onClick={() => deleteData(elements._id)}
                         type="button"
@@ -101,7 +101,7 @@ console.log(boole, "qqqqqqqqqqq");
                       </button>
                     )} 
 
-                    <div className="flex justify-around xl:pt-14 sm:pt">
+                    {/* <div className="flex justify-around xl:pt-14 sm:pt">
                       <Link href="/Infos#comment">
                         <button className="hover:-translate-y-0.5 flex gap-2 transform transition text-slate-500 focus:text-black">
                           <FaRegCommentDots className="w-6  h-6  " />
@@ -112,7 +112,7 @@ console.log(boole, "qqqqqqqqqqq");
                         <AiFillLike className="w-6 h-6 " />
                         <span>2</span>
                       </button>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
 

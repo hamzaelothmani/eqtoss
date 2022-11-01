@@ -17,7 +17,7 @@ const ShoppingList = ({result}) => {
   const [page, setPage] = useState(0);
   const [sortt, setSortt] = useState("Date");
   const [filterr, setFilterr] = useState("All");
-  const [orderBy, setOrderBy] = useState(1);
+  const [orderBy, setOrderBy] = useState(-1);
   const [patch, setPatch] = useState([]);
   const [putin, setPutin] = useState()
   console.log(putin, "putinnnnnnnnn");
@@ -154,9 +154,7 @@ console.log(formData.map(ele=> ele.commt), 'comments');
         <div className="flex items-center justify-between mt-4">
           <p className="font-medium">Filters</p>
 
-          <button className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium rounded-md">
-            Reset Filter
-          </button>
+         
         </div>
 
         <div className="m-auto">
@@ -233,14 +231,14 @@ console.log(formData.map(ele=> ele.commt), 'comments');
             Previous
           </button>
         </div>
-        <div className="hidden md:-mt-px md:flex">
+        {/* <div className="hidden md:-mt-px md:flex">
         
           <a
             href="#"
             className="border-transparent  opacity-50 text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"
           >
             
-           {page >= 1 ? page - 1 : ""}
+           {page > 1 ? page - 1 : ""}
           </a>
           <a
             href="#"
@@ -257,7 +255,7 @@ console.log(formData.map(ele=> ele.commt), 'comments');
             {page + 1 }
           </a>
          
-        </div>
+        </div> */}
         <div className="-mt-px w-0 flex-1 flex justify-end">
           <button
             disabled={page === pageCount}

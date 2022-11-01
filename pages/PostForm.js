@@ -7,6 +7,7 @@ import axios from "axios";
 
 const PostForm = () => {
   const { data: session, status } = useSession();
+  console.log(session, "sessionssssssssss");
   const [images, setImages] = useState([]);
   const [title, setTitle] = useState(" ");
   const [description, setDescription] = useState(" ");
@@ -18,13 +19,13 @@ const PostForm = () => {
   const [allowed, setAllowed] = useState(false);
   // const [save, setSave] = useState(false)
 
-  const [userEmail, setUserEmail] = useState(session?.user.email)
-  const [userName, setUserName] = useState(session?.user.name)
-  const [timix, setTimix] = useState(new Date().toLocaleString().split(',')[0])
+  const [userEmail, setUserEmail] = useState();
+  const [userName, setUserName] = useState();
+  const [timix, setTimix] = useState(new Date().toLocaleString().split(",")[0]);
   console.log(timix, "timix");
   console.log(userName, "userName");
   console.log(userEmail, "userEmail");
-  console.log(allowed, 'allowed');
+  console.log(allowed, "allowed");
   console.log(areImagesLoaded, "areImageLoaded");
   // const [acceptedFiles, setacceptedFiles] = useState();
   // console.log(areImagesLoaded, "fddddddddddddddddv");
@@ -42,7 +43,7 @@ const PostForm = () => {
     console.log(files);
 
     let urls = [];
-    if (files.length > 4) {
+    if (files.length > 4 && files.length < 1) {
       alert("sorry you can choose only max 5 files");
     }
 
@@ -84,8 +85,8 @@ const PostForm = () => {
         images,
         prePrice,
         userEmail,
-       userName,
-       timix
+        userName,
+        timix,
       })
       .then(function (response) {
         console.log(response);
@@ -95,27 +96,40 @@ const PostForm = () => {
       });
   };
 
+  const check =
+    /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/;
   useEffect(() => {
-    if(
-
-      title.length > 0 &&
-      url.length > 0 &&
-      description.length > 0 &&
-      category.length > 0 &&
-      price.length > 0 &&
-      prePrice.length > 0 &&
-      // userName.length > 0 &&
-      timix.length > 0 &&
-      images.length > 0 
-    ){
-      return setAllowed(true)
-    }else{
-
+    if (
+      title.length > 3 &&
+      description.length > 10 &&
+      price.length > 1 &&
+      parseInt(price) < parseInt(prePrice) > 0 &&
+      category.length > 3 &&
+      check.test(url) &&
+      timix.length > 1 &&
+      images.length > 2 &&
+      images.length < 5
+    ) {
+      return setAllowed(true);
+    } else {
       setAllowed(false);
     }
-  
-      
-  }, [title, url, description, category, price, prePrice, images]);
+    setUserName(session?.user.name)
+    setUserEmail(session?.user.email)
+  }, [
+    title,
+    url,
+    description,
+    category,
+    price,
+    prePrice,
+    images,
+    timix,
+    userName,
+    userEmail,
+
+    session,
+  ]);
 
   return (
     <>
@@ -149,7 +163,7 @@ const PostForm = () => {
                     className="max-w-lg shadow-sm block w-full xl:h-10 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"
                   />
                   <p className="mt-2 text-sm text-red-500">
-                  {title.length > 5 ? <FcCheckmark />: "*Required"}
+                    {title.length > 3 ? <FcCheckmark /> : "*Required"}
                   </p>
                 </div>
               </div>
@@ -169,8 +183,8 @@ const PostForm = () => {
                     rows="3"
                     className="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"
                   />
-                   <p className="mt-2 text-sm text-red-500">
-                  {description.length > 5 ? <FcCheckmark />: "*Required"}
+                  <p className="mt-2 text-sm text-red-500">
+                    {description.length > 10 ? <FcCheckmark /> : "*Required"}
                   </p>
                 </div>
               </div>
@@ -191,8 +205,8 @@ const PostForm = () => {
                     rows="3"
                     className="max-w-lg shadow-sm block xl:h-10 w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"
                   />
-                     <p className="mt-2 text-sm text-red-500">
-                  {price.length > 1 ? <FcCheckmark />: "*Required"}
+                  <p className="mt-2 text-sm text-red-500">
+                    {price.length > 1 ? <FcCheckmark /> : "*Required"}
                   </p>
                 </div>
               </div>
@@ -212,8 +226,12 @@ const PostForm = () => {
                     rows="3"
                     className="max-w-lg shadow-sm block w-full xl:h-10 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"
                   />
-                     <p className="mt-2 text-sm text-red-500">
-                  { price.length <= prePrice.length  &&  parseInt(price) < parseInt(prePrice)  ? <FcCheckmark />: "*Required"}
+                  <p className="mt-2 text-sm text-red-500">
+                    {parseInt(price) < parseInt(prePrice) ? (
+                      <FcCheckmark />
+                    ) : (
+                      "*Required"
+                    )}
                   </p>
                 </div>
               </div>
@@ -233,17 +251,17 @@ const PostForm = () => {
                     autoComplete="country-name"
                     className="max-w-lg h-10 block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                   >
-                    <option >All Type</option>
-                    <option >Clothes</option>
-                    <option >Pets</option>
-                    <option >Grocery</option>
-                    <option >Tech</option>
-                    <option >Gaming</option>
-                    <option >Food</option>
-                    <option >Travel</option>
+                    <option>All Type</option>
+                    <option>Clothes</option>
+                    <option>Pets</option>
+                    <option>Grocery</option>
+                    <option>Tech</option>
+                    <option>Gaming</option>
+                    <option>Food</option>
+                    <option>Travel</option>
                   </select>
                   <p className="mt-2 text-sm text-red-500">
-                  {category.length > 3 ? <FcCheckmark />: "*Required"}
+                    {category.length > 3 ? <FcCheckmark /> : "*Required"}
                   </p>
                 </div>
               </div>
@@ -270,7 +288,7 @@ const PostForm = () => {
                     />
                   </div>
                   <p className="mt-2 text-sm text-red-500">
-                  {url.length > 5 ? <FcCheckmark />: "*Required"}
+                    {check.test(url) ? <FcCheckmark /> : "*Required"}
                   </p>
                 </div>
               </div>
@@ -317,7 +335,6 @@ const PostForm = () => {
                           />
                         </label>
                         <p className="pl-1">or drag and drop</p>
-                        
                       </div>
                       <p className="text-xs text-gray-500">
                         PNG, JPG, GIF up to 10MB
@@ -329,48 +346,63 @@ const PostForm = () => {
                     </div>
                   </div>
                   <div className="flex  justify-center ">
-                {/* {images.map((link, index) => (
+                    {/* {images.map((link, index) => (
                   <div key={index}>
                     <img className="w-40 h-40" src={link} />
                   </div>
                 ))} */}
+                  </div>
+                  <div>
+                    <p className=" my-1 absolute text-sm text-red-500">
+                      {images.length > 2 && images.length < 5 ? (
+                        <FcCheckmark />
+                      ) : (
+                        "*Required"
+                      )}
+                    </p>
+                  </div>
                 </div>
-                <div>
-
-<p className=" my-1 absolute text-sm text-red-500">
-        {images.length > 2 && images.length < 5 ? <FcCheckmark />: "*Required"}
-        </p>
-  </div>
               </div>
-           
-              
-              </div>
-              
             </div>
-         
           </div>
           <div className="pt-5">
             <div className="flex justify-end">
-            <Link href='/' ><button
-                type="button"
-                className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              >
-                Cancel
-              </button></Link>
+              <Link href="/">
+                <button
+                  type="button"
+                  className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                  Cancel
+                </button>
+              </Link>
 
-           <button
-            
-                disabled={ allowed === false && areImagesLoaded === false }
-                onClick={() => sendData()}
-                type="submit"
-                className={`ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white ${
-                  allowed && areImagesLoaded
-                    ? "bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 "
-                    : "bg-slate-500 "
-                }  focus:outline-none focus:ring-2 focus:ring-offset-2 `}
-              >
-                Save
-              </button>
+              {!allowed  ? (
+                <button
+                  disabled={true}
+                  onClick={() => sendData()}
+                  type="submit"
+                  className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white 
+                 
+                   
+                bg-slate-500 
+            focus:outline-none focus:ring-2 focus:ring-offset-2 "
+                >
+                  Save
+                </button>
+              ) : (
+                <button
+                  // disabled={ allowed === false && areImagesLoaded === false }
+                  onClick={() => sendData()}
+                  type="submit"
+                  className={`ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white 
+                
+                     bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 
+                    
+                  focus:outline-none focus:ring-2 focus:ring-offset-2 `}
+                >
+                  Save
+                </button>
+              )}
             </div>
           </div>
         </div>

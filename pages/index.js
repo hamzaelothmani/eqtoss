@@ -10,7 +10,7 @@ import { Autoplay, Pagination, Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const svgVariants = {
   hidden: { y: 2 },
@@ -33,6 +33,7 @@ visible: {
 };
 
 export default function Home() {
+  const [modal, setModal] = useState()
   
 useEffect(()=>{
   Aos.init({duration: 2000})
@@ -71,150 +72,66 @@ useEffect(()=>{
     </div>
   </div>
 </section>
-      <div className="  flex gap-4 justify-center w-full  text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl xl:mb-0 mb-8  xl:h-16 lg:h-12 md:h-10 sm:h-8 xl:text-4xl lg:text-2xl md:text-xl  text-center  xl:mt-20 lg:mt-16 md:mt-12 mt-6 ">
-      
 
-        <h1>Categories</h1>
-        
+<section aria-labelledby="category-heading" className="pt-24 sm:pt-32 xl:max-w-7xl xl:mx-auto xl:px-8">
+      <div className="px-4 sm:px-6 sm:flex sm:items-center sm:justify-between lg:px-8 xl:px-0">
+        <h2 id="category-heading" className="text-2xl font-extrabold tracking-tight text-gray-900">Shop by Category</h2>
+        <Link href='/ShoppingList' ><a href="#" className="hidden text-sm font-semibold text-indigo-600 hover:text-indigo-500 sm:block">Browse all categories<span aria-hidden="true"> &rarr;</span></a></Link>
       </div>
-      {/* <p className="mt-3 text-center max-w-2xl mx-auto text-xl text-gray-500 è:mt-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed.</p> */}
 
-            {/* <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">Categories</h2> */}
-      <div className="  ">
-        <Swiper
-          spaceBetween={20}
-          centeredSlides={true}
-          autoplay={{
-              delay: 2500,
-              disableOnInteraction: false,
-          }}
-          // pagination={{
-          //   clickable: true,
-          // }}
-          slidesPerView={3}
-          scrollbar={{ draggable: true }}
-          // navigation={true}
-          // max-h-52 xl:max-h-[500px]
-          modules={[Autoplay, Pagination, Navigation]}
-          className="mySwiper    xl:w-[1200px] "
-        >
-          {/* xl:w-auto w-36 lg:w-60 md:w-52 */}
-          <SwiperSlide>
-            <div className=" xl:border-0 border rounded-lg ">
-              <Image
-                width={1000}
-                height={1000}
-                layout="responsive"
-                className="rounded-lg"
-                quality={100}
-                src="/images/resto.png"
-              />
+      <div className="mt-4 flow-root">
+        <div className="-my-2">
+          <div className="box-content py-2 relative h-80 overflow-x-auto xl:overflow-visible">
+            <div className="absolute min-w-screen-xl px-4 flex space-x-8 sm:px-6 lg:px-8 xl:relative xl:px-0 xl:space-x-0 xl:grid xl:grid-cols-5 xl:gap-x-8">
+              <a href="#" className="relative w-56 h-80 rounded-lg p-6 flex flex-col overflow-hidden hover:opacity-75 xl:w-auto">
+                <span aria-hidden="true" className="absolute inset-0">
+                  <img src="https://tailwindui.com/img/ecommerce-images/home-page-01-category-01.jpg" alt="" className="w-full h-full object-center object-cover"/>
+                </span>
+                <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"></span>
+                <span className="relative mt-auto text-center text-xl font-bold text-white">New Arrivals</span>
+              </a>
+
+              <a href="#" className="relative w-56 h-80 rounded-lg p-6 flex flex-col overflow-hidden hover:opacity-75 xl:w-auto">
+                <span aria-hidden="true" className="absolute inset-0">
+                  <Image src='/aa.jpg' layout="fill" quality={75} />
+                </span>
+                <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"></span>
+                <span className="relative mt-auto text-center text-xl font-bold text-white">Clothes</span>
+              </a>
+
+              <a href="#" className="relative w-56 h-80 rounded-lg p-6 flex flex-col overflow-hidden hover:opacity-75 xl:w-auto">
+                <span aria-hidden="true" className="absolute inset-0">
+                <Image src='/hh.jpg' layout="fill"  quality={75} />
+                </span>
+                <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"></span>
+                <span className="relative mt-auto text-center text-xl font-bold text-white">Tech</span>
+              </a>
+
+              <a href="#" className="relative w-56 h-80 rounded-lg p-6 flex flex-col overflow-hidden hover:opacity-75 xl:w-auto">
+                <span aria-hidden="true" className="absolute inset-0">
+                <Image src='/pp.jpg' layout="fill" quality={75} />
+                </span>
+                <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"></span>
+                <span className="relative mt-auto text-center text-xl font-bold text-white">Gamming</span>
+              </a>
+
+              <a href="#" className="relative w-56 h-80 rounded-lg p-6 flex flex-col overflow-hidden hover:opacity-75 xl:w-auto">
+                <span aria-hidden="true" className="absolute inset-0">
+                <Image src='/qq.jpg' layout="fill" quality={75} />
+                </span>
+                <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"></span>
+                <span className="relative mt-auto text-center text-xl font-bold text-white">Pet</span>
+              </a>
             </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            {/* xl:w-[700px] lg:w-[550px] md:w-[450px] w-[300px] */}
-            <div className=" xl:border-0 border rounded-lg ">
-              <Image
-                width={1000}
-                height={1000}
-                layout="responsive"
-                className="rounded-lg"
-                quality={100}
-                src="/images/grocery.png"
-              />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="  xl:border-0 border rounded-lg   ">
-              <Image
-                width={1000}
-                height={1000}
-                layout="responsive"
-                className="rounded-lg"
-                quality={100}
-                src="/images/health.png"
-              />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            {/* xl:w-[700px] lg:w-[550px] md:w-[450px] w-[300px] */}
-            <div className=" xl:border-0 border rounded-lg  ">
-              <Image
-                width={1000}
-                height={1000}
-                layout="responsive"
-                className="rounded-lg"
-                quality={100}
-                src="/images/tech.png"
-              />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className=" xl:border-0 border rounded-lg  ">
-              <Image
-                width={1000}
-                height={1000}
-                layout="responsive"
-                className="rounded-lg"
-                quality={100}
-                src="/images/travel.png"
-              />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            {/* xl:w-[700px] lg:w-[550px] md:w-[450px] w-[300px] */}
-            <div className=" xl:border-0 border rounded-lg  ">
-              <Image
-                width={1000}
-                height={1000}
-                layout="responsive"
-                className="rounded-lg"
-                quality={100}
-                src="/images/serveces.png"
-              />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            {/* xl:w-[700px] lg:w-[550px] md:w-[450px] w-[300px] */}
-            <div className="xl:border-0 border rounded-lg ">
-              <Image
-                width={1000}
-                height={1000}
-                layout="responsive"
-                className="rounded-lg"
-                quality={100}
-                src="/images/MM.png"
-              />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            {/* xl:w-[700px] lg:w-[550px] md:w-[450px] w-[300px] */}
-            <div className="xl:border-0 border rounded-lg ">
-              <Image
-                width={1000}
-                height={1000}
-                layout="responsive"
-                className="rounded-lg"
-                quality={100}
-                src="/images/pet.png"
-              />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            {/* xl:w-[700px] lg:w-[550px] md:w-[450px] w-[300px] */}
-            <div className="xl:border-0 border rounded-lg">
-              <Image
-                width={1000}
-                height={1000}
-                layout="responsive"
-                className="rounded-lg"
-                quality={100}
-                src="/images/gaming.png"
-              />
-            </div>
-          </SwiperSlide>
-        </Swiper>
+          </div>
+        </div>
       </div>
+
+      <div className="mt-6 px-4 sm:hidden">
+        <Link href='/ShoppingList' ><a  className="block text-sm font-semibold text-indigo-600 hover:text-indigo-500">Browse all categories<span aria-hidden="true"> &rarr;</span></a></Link>
+      </div>
+    </section>
+
       
       <section data-aos="fade-up" className="bg-white ">
     <div className="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
@@ -235,6 +152,66 @@ eQToss follows the guidance of Web Content Accessibility Guidelines 2.1 (WCAG 2.
         </div>
     </div>
 </section>
+
+
+<div data-aos="fade-right" className="relative bg-white py-16 sm:py-24">
+  <div className="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-24 lg:items-start">
+    <div className="relative sm:py-16 lg:py-0">
+      <div aria-hidden="true" className="hidden sm:block lg:absolute lg:inset-y-0 lg:right-0 lg:w-screen">
+        <div className="absolute inset-y-0 right-1/2 w-full bg-gray-50 rounded-r-3xl lg:right-72"></div>
+        <svg className="absolute top-8 left-1/2 -ml-3 lg:-right-8 lg:left-auto lg:top-12" width="404" height="392" fill="none" viewBox="0 0 404 392">
+          <defs>
+            <pattern id="02f20b47-fd69-4224-a62a-4c9de5c763f7" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+              <rect x="0" y="0" width="4" height="4" className="text-gray-200" fill="currentColor" />
+            </pattern>
+          </defs>
+          <rect width="404" height="392" fill="url(#02f20b47-fd69-4224-a62a-4c9de5c763f7)" />
+        </svg>
+      </div>
+      <div className="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0 lg:max-w-none lg:py-20">
+        {/* <!-- Testimonial card--> */}
+        <div className="relative pt-64 pb-10 rounded-2xl shadow-xl overflow-hidden">
+          <img className="absolute inset-0 h-full w-full object-cover" src="https://images.unsplash.com/photo-1521510895919-46920266ddb3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&fp-x=0.5&fp-y=0.6&fp-z=3&width=1440&height=1440&sat=-100" alt=""/>
+          <div className="absolute inset-0 bg-indigo-500 mix-blend-multiply"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-indigo-600 via-indigo-600 opacity-90"></div>
+          <div className="relative px-8">
+            <div>
+              <img className="h-12" src="https://tailwindui.com/img/logos/workcation.svg?color=white" alt="Workcation"/>
+            </div>
+            <blockquote className="mt-8">
+              <div className="relative text-lg font-medium text-white md:flex-grow">
+                <svg className="absolute top-0 left-0 transform -translate-x-3 -translate-y-2 h-8 w-8 text-indigo-400" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
+                  <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
+                </svg>
+                <p className="relative">Tincidunt integer commodo, cursus etiam aliquam neque, et. Consectetur pretium in volutpat, diam. Montes, magna cursus nulla feugiat dignissim id lobortis amet.</p>
+              </div>
+
+              <footer className="mt-4">
+                <p className="text-base font-semibold text-indigo-200">Hamza El Otmani, CEO at eQToss</p>
+              </footer>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div className="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0">
+      {/* <!-- Content area --> */}
+      <div className="pt-12 sm:pt-16 lg:pt-20">
+        <h2 className="text-3xl text-gray-900 font-extrabold tracking-tight sm:text-4xl">On a mission to empower teams</h2>
+        <div className="mt-6 text-gray-500 space-y-6">
+          <p className="text-lg">Sagittis scelerisque nulla cursus in enim consectetur quam. Dictum urna sed consectetur neque tristique pellentesque. Blandit amet, sed aenean erat arcu morbi. Cursus faucibus nunc nisl netus morbi vel porttitor vitae ut. Amet vitae fames senectus vitae.</p>
+          <p className="text-base leading-7">Sollicitudin tristique eros erat odio sed vitae, consequat turpis elementum. Lorem nibh vel, eget pretium arcu vitae. Eros eu viverra donec ut volutpat donec laoreet quam urna. Sollicitudin tristique eros erat odio sed vitae, consequat turpis elementum. Lorem nibh vel, eget pretium arcu vitae. Eros eu viverra donec ut volutpat donec laoreet quam urna.</p>
+          <p className="text-base leading-7">Rhoncus nisl, libero egestas diam fermentum dui. At quis tincidunt vel ultricies. Vulputate aliquet velit faucibus semper. Pellentesque in venenatis vestibulum consectetur nibh id. In id ut tempus egestas. Enim sit aliquam nec, a. Morbi enim fermentum lacus in. Viverra.</p>
+        </div>
+      </div>
+
+      {/* <!-- Stats section --> */}
+  
+    </div>
+  </div>
+</div>
+
 
 {/* <!-- This example requires Tailwind CSS v2.0+ --> */}
 <div className="relative  pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
@@ -303,6 +280,16 @@ eQToss follows the guidance of Web Content Accessibility Guidelines 2.1 (WCAG 2.
   </div>
 </div>
 
+<div className="bg-white">
+  <div className="max-w-2xl mx-auto text-center py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
+    <h2 className="text-3xl font-extrabold text-violet-800 sm:text-4xl">
+      <span className="block">Boost your productivity.</span>
+      <span className="block">Start using Workflow today.</span>
+    </h2>
+    <p className="mt-4 text-lg leading-6 text-gray-700">Ac euismod vel sit maecenas id pellentesque eu sed consectetur. Malesuada adipiscing sagittis vel nulla nec.</p>
+    <Link href='/Login' ><a href="#" className="mt-8 w-full inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-300 sm:w-auto"> Sign up for free </a></Link>
+  </div>
+</div>
   
     </>
   );

@@ -12,12 +12,12 @@ export default async function handler(req, res) {
         const page = req.query.page || 0
         const sortt = req.query.sortt || "createdAt"
         const filterr = req.query.filterr  || 'All'
-        const orderBy = req.query.orderBy  || -1
+        const orderBy = req.query.orderBy  || 1
         
         // .where({category: filterr}).sort({createdAt: -1})
         // .sort({sort: 1})
         // .where({category: filter})
-        const products = 4
+        const products = 10
         const clients = await Poster.find({ category: ( filterr === "All" && {$exists: true}  ||filterr ||  {$exists: true}) }).sort([[(sortt== "Date" ? "createdAt": sortt), orderBy]]).skip(page * products).limit(products).exec();
         res.status(200).json({success: true, data:clients });
       } catch (error) {

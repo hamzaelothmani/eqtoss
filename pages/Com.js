@@ -1,7 +1,9 @@
 import React from 'react'
+import { useSession } from "next-auth/react";
 
 
 const Com = ({id, text, date, state, ele, name}) => {
+  const { data: session, status } = useSession();
   console.log(ele, 'eerererer');
   return (
     <>
@@ -11,7 +13,7 @@ const Com = ({id, text, date, state, ele, name}) => {
                 <img src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80" alt="" className="w-10 h-10 bg-gray-100 rounded-full"/>
               </div>
               <div className="py-10 border-b w-full border-gray-200">
-                <h3 className="font-medium text-gray-900"> hamza </h3>
+                <h3 className="font-medium text-gray-900"> {session?.user.name}</h3>
                 <p><time dateTime="2021-07-16"> {new Date().toLocaleString().split(',')[0]} </time></p>
 
                 <div className="flex items-center mt-4">
