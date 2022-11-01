@@ -55,7 +55,7 @@ const ShoppingList = ({result}) => {
 
 
   useEffect(() => {
-    (async () => {
+    
       if (!input) {
         axios
           .get(
@@ -69,7 +69,7 @@ const ShoppingList = ({result}) => {
             console.log(error);
           });
       } else {
-        const { data } = await axios.get("/api/server/search", {
+        const { data } =  axios.get("/api/server/search", {
           params: {
             title: input,
           },
@@ -77,7 +77,7 @@ const ShoppingList = ({result}) => {
         setFormData(...data);
       }
      
-    })();
+    ;
   }, [input, page, filterr, sortt, orderBy]);
 
 
@@ -90,7 +90,7 @@ const ShoppingList = ({result}) => {
 
       await axios
         .patch(
-          `/api/${session.user.email}`,
+          `/api/${session?.user.email}`,
           { id },
           {
             headers: { "Content-type": "application/json; charset=UTF-8" },
@@ -112,7 +112,7 @@ const ShoppingList = ({result}) => {
 
       await axios
         .put(
-          `/api/${session.user.email}`,
+          `/api/${session?.user.email}`,
           { id },
           {
             headers: { "Content-type": "application/json" },
