@@ -7,7 +7,7 @@ import { BsArrowDownCircleFill, BsFillArrowUpCircleFill } from "react-icons/bs";
 
 
 const ShoppingList = ({result}) => {
-  
+
 
   // const [product, setProduct] = useState(data);
   const { data: session, status } = useSession();
@@ -52,10 +52,10 @@ const ShoppingList = ({result}) => {
   };
 
 
-
+// last change
 
   useEffect(() => {
-    
+
       if (!input) {
         axios
           .get(
@@ -76,16 +76,16 @@ const ShoppingList = ({result}) => {
         });
         setFormData(...data);
       }
-     
+
     ;
   }, [input, page, filterr, sortt, orderBy]);
 
 
 
-      
+
 
   const patchData = async (id) => {
-   
+
     if(session){
 
       await axios
@@ -104,10 +104,10 @@ const ShoppingList = ({result}) => {
         });
     }
 
-    
+
   };
   const deleteData = async (id) => {
-  
+
     if(session){
 
       await axios
@@ -125,7 +125,7 @@ const ShoppingList = ({result}) => {
           console.log(error, "ffffff");
         });
     }
-    
+
   };
   return (
     <>
@@ -153,7 +153,7 @@ const ShoppingList = ({result}) => {
         <div className="flex items-center justify-between mt-4">
           <p className="font-medium">Filters</p>
 
-         
+
         </div>
 
         <div className="m-auto">
@@ -203,7 +203,7 @@ const ShoppingList = ({result}) => {
           session={session}
         />
       ))}
-   
+
 
       <nav className="border-t xl:mx-20 border-gray-200 px-4 flex items-center justify-between sm:px-0">
         <div className="-mt-px w-0 flex-1 flex">
@@ -231,29 +231,29 @@ const ShoppingList = ({result}) => {
           </button>
         </div>
         {/* <div className="hidden md:-mt-px md:flex">
-        
+
           <a
             href="#"
             className="border-transparent  opacity-50 text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"
           >
-            
+
            {page > 1 ? page - 1 : ""}
           </a>
           <a
             href="#"
             className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"
           >
-            
+
            {page}
           </a>
           <a
             href="#"
             className="border-transparent opacity-50 text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"
           >
-            
+
             {page + 1 }
           </a>
-         
+
         </div> */}
         <div className="-mt-px w-0 flex-1 flex justify-end">
           <button
@@ -290,6 +290,6 @@ export default ShoppingList;
 export const getServerSideProps = async (context) => {
   const res = await fetch('http://localhost:3000/api/server/saveProduct')
   const result = await res.json()
-  
+
   return {props: {result}}
 }
