@@ -18,8 +18,8 @@ const Infos = () => {
     const router = useRouter();
     const elements = router.query;
     
-    const { price, prePrice, title, description, images, commt } = elements;
-    console.log(commt, 'comments')
+    const { price, prePrice, title, description, images, commt, url } = elements;
+   console.log(url, 'urrrrrrrrrrrrl');
     console.log(elements,"hgjgbgbgbhgb")
 useEffect(()=>{
 
@@ -149,8 +149,8 @@ else{
         </div>
 
         <form className=" relative mt-6">
-          {/* <!-- Colors --> */}
-        <div className="absolue left-0 bottom-0">
+        
+        {/* <div className="absolue left-0 bottom-0">
         <button type="button" className="text-white bg-green-400 hover:bg-green-500 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#3b5998]/55 mr-2 mb-2">
   <BsWhatsapp className="w-6 h-6 mr-2" />
   whatsapp
@@ -159,10 +159,10 @@ else{
 <SiGmail className="w-6 h-6 mr-2" />
   Gmail
 </button>
-        </div>
+        </div> */}
 
           <div className="mt-10 flex sm:flex-col1">
-            <button type="submit" className="max-w-xs flex-1 bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500 sm:w-full">Add to bag</button>
+            <a href={url}  className="max-w-xs flex-1 bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500 sm:w-full">See The Deal</a>
 
             <button type="button" className="ml-4 py-3 px-3 rounded-md flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-500">
               {/* <!-- Heroicon name: outline/heart --> */}
@@ -238,7 +238,7 @@ else{
 
 
 
-<div id="comment">
+<div id="comment" className="xl:mt-20 sm:mt-10">
   <Test elements={elements} />
 </div>
     </>

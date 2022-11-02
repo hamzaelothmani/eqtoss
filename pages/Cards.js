@@ -74,7 +74,7 @@ const Cards = ({ elements, patchData, deleteData, putin }) => {
                         See More Infos
                       </a>
                     </Link>
-                    { putin?.includes(elements._id)? (
+                    {/* { putin?.includes(elements._id)? (
                        <button
                         onClick={() => deleteData(elements._id)}
                         type="button"
@@ -90,7 +90,7 @@ const Cards = ({ elements, patchData, deleteData, putin }) => {
                       >
                         <MdOutlineBookmarkAdd className="w-6 h-6" />
                       </button>
-                    )} 
+                    )}  */}
 
                   
                   </div>

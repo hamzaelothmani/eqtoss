@@ -19,18 +19,18 @@ const ShoppingList = ({result}) => {
   const [filterr, setFilterr] = useState("All");
   const [orderBy, setOrderBy] = useState(1);
   const [patch, setPatch] = useState([]);
-  const [putin, setPutin] = useState()
+  // const [putin, setPutin] = useState()
 
 
-  useEffect(()=>{
-    if(session){
+  // useEffect(()=>{
+  //   if(session){
 
-      const filerDatix = result.data.filter((ele=>ele.saveEmail == session.user.email))
+  //     const filerDatix = result.data.filter((ele=>ele.saveEmail == session.user.email))
 
-              const done = filerDatix.map((item)=> item.savePro)
-              setPutin(...done)
-    }
-  }, [result, session])
+  //             const done = filerDatix.map((item)=> item.savePro)
+  //             setPutin(...done)
+  //   }
+  // }, [result, session])
 
 
   const handlePrevious = () => {
@@ -198,7 +198,7 @@ const ShoppingList = ({result}) => {
           key={index}
           patchData={patchData}
           deleteData={deleteData}
-          putin={putin}
+          // putin={putin}
           // boolix={boolix}
           session={session}
         />
@@ -287,9 +287,9 @@ const ShoppingList = ({result}) => {
 
 export default ShoppingList;
 
-export const getServerSideProps = async (context) => {
-  const res = await fetch('http://localhost:3000/api/server/saveProduct')
-  const result = await res.json()
+// export const getServerSideProps = async (context) => {
+//   const res = await fetch('http://localhost:3000/api/server/saveProduct')
+//   const result = await res.json()
   
-  return {props: {result}}
-}
+//   return {props: {result}}
+// }
