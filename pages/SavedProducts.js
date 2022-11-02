@@ -16,19 +16,35 @@ const [appear, setAppear] = useState([])
 
 
 
+useEffect(()=>{
+  if(session){
+   
+
+axios.get(`/api/server/saveProduct`)
+
+  .then(function(response) {
+
+   
+    const filerDatix = response.data.data.filter((ele=>ele.saveEmail == session?.user.email))
+
+    const result = filerDatix.map((item)=> item.savePro)
+
+ 
+setSavedDt(...result)
+  })
+  .catch(function(error) {
+      console.log((error))
+  });
+
+
+  }
+}, [session])
+
+
+
     useEffect(()=>{
       
-      if(session){
-       
 
-        const filerDatix = people.data.filter((ele=>ele.saveEmail == session?.user.email))
-
-        const result = filerDatix.map((item)=> item.savePro)
-   
-     
-setSavedDt(...result)
-
-    } 
    
         // console.log(savedDt, 'saved dddd');
   if(savedDt){
@@ -52,7 +68,7 @@ setSavedDt(...result)
    
   }
   
-    }, [savedDt, session])
+    }, [savedDt])
 
 
 
@@ -142,8 +158,8 @@ setSavedDt(...result)
 
 export default SavedProducts
 
-export const getServerSideProps = async (context) => {
-  const res = await fetch('http://localhost:3000/api/server/saveProduct')
-  const people = await res.json()
-  return {props: {people}}
-}
+// export const getServerSideProps = async (context) => {
+//   const res = await fetch('http://localhost:3000/api/server/saveProduct')
+//   const people = await res.json()
+//   return {props: {people}}
+// }

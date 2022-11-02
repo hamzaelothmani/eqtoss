@@ -6,7 +6,7 @@ import { useSession } from "next-auth/react";
 import { BsArrowDownCircleFill, BsFillArrowUpCircleFill } from "react-icons/bs";
 
 
-const ShoppingList = ({result}) => {
+const ShoppingList = () => {
   
 
   // const [product, setProduct] = useState(data);
@@ -19,18 +19,34 @@ const ShoppingList = ({result}) => {
   const [filterr, setFilterr] = useState("All");
   const [orderBy, setOrderBy] = useState(1);
   const [patch, setPatch] = useState([]);
-  // const [putin, setPutin] = useState()
+  const [putin, setPutin] = useState()
 
 
-  // useEffect(()=>{
-  //   if(session){
+  useEffect(()=>{
+    if(session){
+     
 
-  //     const filerDatix = result.data.filter((ele=>ele.saveEmail == session.user.email))
+  axios.get(`/api/server/saveProduct`)
 
-  //             const done = filerDatix.map((item)=> item.savePro)
-  //             setPutin(...done)
-  //   }
-  // }, [result, session])
+    .then(function(response) {
+
+      const filerDatix = response.data.data.filter((ele=>ele.saveEmail == session.user.email))
+    
+      const done = filerDatix.map((item)=> item.savePro)
+ 
+      setPutin(...done)
+    })
+    .catch(function(error) {
+        console.log((error))
+    });
+  
+
+      // const filerDatix = result.data.filter((ele=>ele.saveEmail == session.user.email))
+
+      //         const done = filerDatix.map((item)=> item.savePro)
+      //         setPutin(...done)
+    }
+  }, [session])
 
 
   const handlePrevious = () => {
@@ -198,7 +214,7 @@ const ShoppingList = ({result}) => {
           key={index}
           patchData={patchData}
           deleteData={deleteData}
-          // putin={putin}
+          putin={putin}
           // boolix={boolix}
           session={session}
         />
