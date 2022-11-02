@@ -8,53 +8,31 @@ import { v4 as uuidv4 } from "uuid";
 
 
 const SavedProducts = ({people}) => {
-  console.log(people.data.map(ele=> ele.savePro[0]), "helloooooooooooo");
+ 
   const { data: session, status } = useSession();
 const [savedDt, setSavedDt] = useState()
 const [appear, setAppear] = useState([])
 
 
 
-// useEffect(  () => {
-// console.log(people.data, "zzzzzzzz");
-//   if(session){
 
-//          console.log(session);
- 
-//          const filerDatix = people.data.filter((ele=>ele.email == session?.user.email))
-//  console.log(filerDatix, "datiiiiiiiiiiiiix");
-//          const result = filerDatix.map((item)=> item.savePro)
-    
-       
-//  setSavedDt(...result)
-
-//      } 
-
-
-      
-  
-// }, [session])
-// console.log(savedDt, 'mongoooooooooseeeeeeeeeeeeeeee');
-// // console.log(savedDt, 'gg');
     useEffect(()=>{
-      console.log('useeffect enter');
-      console.log(people.data, 'geeee');
+      
       if(session){
-        console.log(people.data, 'iiiiiiiiiinnnnnnnnn');
-console.log(session, 'inside session');
+       
 
         const filerDatix = people.data.filter((ele=>ele.saveEmail == session?.user.email))
-console.log(filerDatix, "filtriiiiix");
+
         const result = filerDatix.map((item)=> item.savePro)
    
-      console.log(result, 'dddddddddddd');
+     
 setSavedDt(...result)
-console.log(savedDt, "savedt enter");
+
     } 
    
         // console.log(savedDt, 'saved dddd');
   if(savedDt){
-    console.log(savedDt, 'hhhhhhhhhhh');
+   
     let users = [];
     let promises = [];
     for (let i = 0; i< savedDt?.length; i++) {
@@ -75,25 +53,7 @@ console.log(savedDt, "savedt enter");
   }
   
     }, [savedDt, session])
-  // const sendiix=()=>{
 
-  //   let users = [];
-  // let promises = [];
-  // for (let i = 0; i< savedDt.length; i++) {
-  //   promises.push(
-  //     axios.get(`/api/server/${savedDt[i]}` ).then(response => {
-  //       // do something with response
-  //       console.log(response, "response");
-  //       users.push(response);
-  //     })
-  //   )
-  // }
-  
-  // Promise.all(promises).then(() => setAppear(users) );
-
-  //  console.log(promises, "promises");
-  //  console.log(users, "users");
-  // }
 
 
   return (

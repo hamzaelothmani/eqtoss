@@ -46,10 +46,10 @@ const ShoppingList = ({result}) => {
     });
   };
 
-  const filterResault = (item) => {
-    const resault = data.filter((pro) => pro.category === item);
-    setProduct(resault);
-  };
+  // const filterResault = (item) => {
+  //   const resault = data.filter((pro) => pro.category === item);
+  //   setProduct(resault);
+  // };
 
 
 
@@ -63,7 +63,7 @@ const ShoppingList = ({result}) => {
           )
           .then(function (response) {
             setFormData(response.data.data);
-            console.log(response.pagination.pageCount, 'hawhawhaw');
+            // console.log(response.pagination.pageCount, 'hawhawhaw');
           })
           .catch(function (error) {
             console.log(error);

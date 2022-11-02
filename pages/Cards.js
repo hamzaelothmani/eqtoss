@@ -7,25 +7,18 @@ import { FaRegCommentDots } from "react-icons/fa";
 import { AiFillLike } from "react-icons/ai";
 import { MdOutlineBookmarkAdd } from "react-icons/md";
 import { MdBookmarkAdd } from "react-icons/md";
-const Cards = ({ elements, id, patchData, patch, deleteData, putin, session }) => {
+const Cards = ({ elements, patchData, deleteData, putin }) => {
 
-  const [boole, setBoole] = useState()
-  console.log(elements, 'hamzaaaaaaaa');
-  console.log(session?.user.email, 'dddddddddd');
-//   useEffect(()=>{
-//     const sett = boolix.data.filter((ham)=> session.user.email == ham.email )
-//     const fett = sett.map((dee)=> dee.boolix)
-//     console.log(...fett, "eeeeeeeeeeeeeeeeeeeeeeeeeeeee");
-    
-// setBoole(...fett)
-//   },[session, boolix])
+  
+  
+
  
-console.log(boole, "qqqqqqqqqqq");
+
 
 
   return (
     <>
-      {}
+     
       <div className="bg-red-white">
         <div className="max-w-5xl mx-auto px-4 py-16 sm:px-6 sm:py-10 ">
           <div className=" space-y-16 sm:mt-16">
@@ -41,9 +34,7 @@ console.log(boole, "qqqqqqqqqqq");
                   <p className="text-sm font-medium text-gray-500">
                   {elements?.timix}
                   </p>
-                  {/* <div className="flex text-sm font-medium">
-                 <button onClick={()=> deleteData(elements._id)}><MdBookmarkAdd className="w-6 h-6" /></button> 
-                  </div> */}
+                
                 </div>
               </div>
 
@@ -101,18 +92,7 @@ console.log(boole, "qqqqqqqqqqq");
                       </button>
                     )} 
 
-                    {/* <div className="flex justify-around xl:pt-14 sm:pt">
-                      <Link href="/Infos#comment">
-                        <button className="hover:-translate-y-0.5 flex gap-2 transform transition text-slate-500 focus:text-black">
-                          <FaRegCommentDots className="w-6  h-6  " />
-                          <span>2</span>
-                        </button>
-                      </Link>
-                      <button className="hover:-translate-y-0.5 flex gap-2 transform transition text-slate-500 focus:text-red-900">
-                        <AiFillLike className="w-6 h-6 " />
-                        <span>2</span>
-                      </button>
-                    </div> */}
+                  
                   </div>
                 </div>
 
