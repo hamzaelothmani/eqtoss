@@ -31,8 +31,6 @@ const Com = ({id, text, date, state, ele, name}) => {
 
 
 
-
-
     </> 
   )
 }

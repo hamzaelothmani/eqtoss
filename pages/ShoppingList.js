@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Cards from "./Cards";
 import Router from 'next/router';
+import Poster from './Poster'
 import { useSession } from "next-auth/react";
 import { BsArrowDownCircleFill, BsFillArrowUpCircleFill } from "react-icons/bs";
 
@@ -20,6 +21,7 @@ const ShoppingList = () => {
   const [orderBy, setOrderBy] = useState(1);
   const [patch, setPatch] = useState([]);
   const [putin, setPutin] = useState()
+  const [loading, setLoading] = useState(false)
 
 
   useEffect(()=>{
@@ -79,6 +81,7 @@ const ShoppingList = () => {
           )
           .then(function (response) {
             setFormData(response.data.data);
+            setLoading(true)
             // console.log(response.pagination.pageCount, 'hawhawhaw');
           })
           .catch(function (error) {
@@ -91,6 +94,7 @@ const ShoppingList = () => {
           },
         });
         setFormData(data);
+        setLoading(true)
       }
      
     })();
@@ -143,6 +147,8 @@ const ShoppingList = () => {
     }
     
   };
+
+  
   return (
     <>
       <div id="carts" className="w-full mt-4 md:w-2/3 shadow m-auto p-5 rounded-lg bg-white">
@@ -206,7 +212,12 @@ const ShoppingList = () => {
         </div>
       </div>
 
-      { formData?.map((elements, index) => (
+      { !loading ? 
+     <Poster />
+    
+    :
+      
+      formData?.map((elements, index) => (
         <Cards
           elements={elements}
           patch={patch}
