@@ -161,6 +161,7 @@ const deleteShit=  (_id)=>{
                 Previous
               </button>
             </div>
+            {/* get rid of */}
             {/* <div className="hidden md:-mt-px md:flex">
             
               <a
