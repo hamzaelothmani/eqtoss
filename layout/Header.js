@@ -148,6 +148,7 @@ export default function Header() {
             </div>
             <div className="hidden sm:ml-6 sm:flex sm:items-center">
               <Link href='/SavedProducts' ><button
+              onClick={()=>setProfile(false)}
                 type="button"
                 className="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
@@ -182,6 +183,7 @@ export default function Header() {
                   >
                     {/* <!-- Active: "bg-gray-100", Not Active: "" --> */}
                     <Link href='/Profile' ><a
+                    onClick={()=>setProfile(false)}
                       href="#"
                       className="block px-4 py-2 text-sm text-gray-700"
                       role="menuitem"
@@ -192,6 +194,7 @@ export default function Header() {
                     </a></Link>
                     <Link href="/Register">
                       <a
+                      onClick={()=>setProfile(false)}
                         className={`${
                           router.asPath == "/Register" ? "hidden" : "block"
                         } px-4 py-2 text-sm text-gray-700`}
@@ -204,7 +207,7 @@ export default function Header() {
                     </Link>
                     {status === "authenticated" ? (
                       <a
-                        onClick={() => signOut()}
+                        onClick={() => {signOut(); setProfile(false)}}
                         className="block px-4 py-2 text-sm text-gray-700"
                         role="menuitem"
                         tabIndex="-1"
@@ -215,6 +218,7 @@ export default function Header() {
                     ) : (
                       <Link href="/Login">
                         <a
+                        onClick={()=>setProfile(false)}
                           className={`${
                             router.asPath == "/Login" ? "hidden" : "block"
                           } px-4 py-2 text-sm text-gray-700`}
@@ -332,6 +336,7 @@ export default function Header() {
                   </div>
                 </div>
                <Link href='/SavedProducts' ><button
+                onClick={()=>setProfile(false)}
                   type="button"
                   className="ml-auto flex-shrink-0 bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
