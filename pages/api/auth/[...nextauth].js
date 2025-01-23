@@ -1,28 +1,23 @@
-import NextAuth from "next-auth"
-import GoogleProvider from "next-auth/providers/google"
+import NextAuth from "next-auth";
+import GoogleProvider from "next-auth/providers/google";
 import FacebookProvider from "next-auth/providers/facebook";
-import { MongoDBAdapter } from "@next-auth/mongodb-adapter"
-import clientPromise from "../../../lib/mongodb"
+import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
+import clientPromise from "../../../lib/mongodb";
 import { compare } from "bcrypt";
 import CredentialsProvider from "next-auth/providers/credentials";
 import User from "../../../model/User";
 import dbConnect from "../../../lib/dbConnect";
 
-
-
-
-
 export default NextAuth({
   // Configure one or more authentication providers
   providers: [
     GoogleProvider({
-        clientId: process.env.GOOGLE_CLIENT_ID,
-        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
     FacebookProvider({
       clientId: process.env.FACEBOOK_CLIENT_ID,
-      clientSecret: process.env.FACEBOOK_CLIENT_SECRET
+      clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
     }),
     CredentialsProvider({
       id: "credentials",
@@ -47,7 +42,6 @@ export default NextAuth({
 
         // Email Not found
         if (!user) {
-          
           throw new Error("Email is not registered");
         }
 
@@ -64,21 +58,16 @@ export default NextAuth({
         return user;
       },
     }),
-   
-    
+
     // ...add more providers here
   ],
   secret: process.env.JWT_SECRET,
   adapter: MongoDBAdapter(clientPromise),
-  pages:{
+  pages: {
     signIn: "/Login",
-    
-  
-    
-  }
-  , 
-  session : {
-    strategy: "jwt"
+  },
+  session: {
+    strategy: "jwt",
   },
   debug: process.env.NODE_ENV !== "production",
 
@@ -87,5 +76,5 @@ export default NextAuth({
   //   secret: process.env.NEXTAUTH_JWT_SECRET
   // },
   // secret: process.env.NEXTAUTH_SECRET
-//
-})
+  //
+});
